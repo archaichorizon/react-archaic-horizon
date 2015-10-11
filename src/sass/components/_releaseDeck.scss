@@ -1,0 +1,84 @@
+#release-deck {
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	background: #ccc;
+
+	display: flex;
+	align-items: center;
+
+	
+	.deck-left,
+	.deck-right {
+		position: relative;
+		z-index: 1;
+	}
+	.deck-left {
+		width: 40%;
+		padding: 4em 1em;
+		margin-left: 4em;
+	}
+	.deck-right {
+		width: 60%;
+		padding: 4em 1em;
+		margin-right: 4em;
+	}
+	.release-cover {
+
+	}
+	.release-tracks {
+		width: 100%;
+	}
+
+
+	
+
+	.release-nav {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		overflow: hidden;
+		clear: both;
+		
+		.prev-release,
+		.next-release {
+			position: relative;
+			height: 100%;
+			width: 4em;
+			cursor: pointer;
+			z-index: 1;
+
+			.hide-text {
+				position: absolute;
+			}
+
+			a {
+				display: flex;
+				align-items: stretch;
+				height: 100%;
+				width: 100%;
+				background: rgba(#444, .08);
+
+				&:hover {
+					background: rgba(#444, .15);
+				}
+			}
+
+				svg {
+					margin: auto;
+				}
+		}
+		.prev-release {
+		}
+		.next-release {
+		}
+	}
+}
