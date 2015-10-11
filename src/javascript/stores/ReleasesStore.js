@@ -15,7 +15,8 @@ class ReleasesStore extends BaseStore {
     }
 
     requestReleases () {
-        this.releases = api(this, 'http://api.archaichorizon.com/releases.json');
+        let url = 'http://api.archaichorizon.com/releases.json';
+        api(this, url);
     }
 
     setState (releases) {
