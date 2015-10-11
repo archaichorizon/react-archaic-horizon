@@ -1,9 +1,11 @@
-.navigation {
+.nav-links {
     padding: 0;
+    width: 100%;
+    text-align: center;
 
     li {
-        display: block;
-        line-height: 1.5;
+        display: inline-block;
+        margin: 0 1em;
 
         a {
             text-decoration: none;
