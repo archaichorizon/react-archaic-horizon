@@ -3,7 +3,7 @@
 import React from 'react';
 
 // Action
-import getRelease from '../actions/getRelease';
+import getRelease from '../../actions/getRelease';
 
 export default class Home extends React.Component{
 
@@ -23,6 +23,8 @@ export default class Home extends React.Component{
         return (
             <article>
                 <h1>{this.props.latest.title}</h1>
+                <h2>{this.props.latest.creator}</h2>
+                <img src={this.props.latest.covers[0].downloads.JPEG} />
             </article>
         );
     }

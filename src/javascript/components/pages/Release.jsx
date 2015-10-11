@@ -3,7 +3,7 @@
 import React from 'react';
 
 // Action
-import getRelease from '../actions/getRelease';
+import getRelease from '../../actions/getRelease';
 
 class Release extends React.Component {
 

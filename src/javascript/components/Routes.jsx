@@ -5,11 +5,11 @@ import { Router, Route, Link } from 'react-router'
 
 // Routes
 import Application from './Application';
-import About from './About';
-import Home from './Home';
-import NotFound from './NotFound';
-import Releases from './Releases';
-import Release from './Release';
+import About from './pages/About';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Releases from './pages/Releases';
+import Release from './pages/Release';
 
 export default (
     <Router component={Application} >
