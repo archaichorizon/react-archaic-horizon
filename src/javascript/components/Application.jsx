@@ -2,7 +2,6 @@
 
 import React, {PropTypes} from 'react';
 import Navigation from './Navigation';
-import Timestamp from './Timestamp';
 import {connectToStores}  from 'fluxible-addons-react';
 
 // Store
@@ -37,7 +36,6 @@ class Application extends React.Component {
                     {React.cloneElement(this.props.children, {releases: this.props.releases})}
                 </main>
                 <footer>
-                    <Timestamp />
                 </footer>
             </div>
         );
