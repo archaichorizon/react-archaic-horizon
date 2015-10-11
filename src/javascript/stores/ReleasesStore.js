@@ -1,24 +1,30 @@
 'use strict';
 
 import BaseStore from 'fluxible/addons/BaseStore';
-import getReleases from '../services/getReleases';
+import api from '../services/api';
 
 
 class ReleasesStore extends BaseStore {
     constructor (dispatcher) {
         super(dispatcher);
-        this.releases;
+        this.releases = undefined;
     }
 
     handleGetReleases (payload) {
-        this.releases = getReleases.releases();
+        this.requestReleases();
+    }
+
+    requestReleases () {
+        this.releases = api(this, 'http://api.archaichorizon.com/releases.json');
+    }
+
+    setState (releases) {
+        this.releases = releases;
         this.emitChange();
     }
 
     getState () {
-        return {
-            releases: this.releases
-        };
+        return this.releases;
     }
 
     dehydrate () {
