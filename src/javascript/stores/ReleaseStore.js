@@ -23,7 +23,7 @@ class ReleaseStore extends BaseStore {
 
     fetchLatest() {
         let url = 'http://api.archaichorizon.com/releases/latest.json';
-        this.latest ? this.setRelease(catNo) : api(this, url, 'latest');
+        this.latest ? this.setRelease('latest') : api(this, url, 'latest');
     }
 
     fetchCatNo(catNo) {
