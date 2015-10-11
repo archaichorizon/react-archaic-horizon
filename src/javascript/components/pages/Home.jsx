@@ -2,6 +2,9 @@
 
 import React from 'react';
 
+// Components
+import ReleaseDeck from '../ReleaseDeck';
+
 // Action
 import getRelease from '../../actions/getRelease';
 
@@ -11,26 +14,8 @@ export default class Home extends React.Component{
         this.context.executeAction(getRelease, 'LATEST');
     }
 
-    renderLoading () {
-        return (
-            <div>
-                <h1>loading</h1>
-            </div>
-        );
-    }
-
-    renderRelease () {
-        return (
-            <article>
-                <h1>{this.props.latest.title}</h1>
-                <h2>{this.props.latest.creator}</h2>
-                <img src={this.props.latest.covers[0].downloads.JPEG} />
-            </article>
-        );
-    }
-
     render () {
-        return typeof this.props.latest !== 'undefined' ? this.renderRelease() : this.renderLoading();
+        return <ReleaseDeck release={this.props.latest} />
     }
 }
 

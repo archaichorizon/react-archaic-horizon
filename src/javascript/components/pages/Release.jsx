@@ -2,6 +2,9 @@
 
 import React from 'react';
 
+// Components
+import ReleaseDeck from '../ReleaseDeck';
+
 // Action
 import getRelease from '../../actions/getRelease';
 
@@ -12,24 +15,8 @@ class Release extends React.Component {
         this.context.executeAction(getRelease, catNo);
     }
 
-    renderLoading () {
-        return (
-            <div>
-                <h1>loading</h1>
-            </div>
-        );
-    }
-
-    renderRelease () {
-        return (
-            <article>
-                <h1>{this.props.release.title}</h1>
-            </article>
-        );
-    }
-
     render () {
-        return typeof this.props.release !== 'undefined' ? this.renderRelease() : this.renderLoading();
+        return <ReleaseDeck release={this.props.release} />
     }
 
 };
