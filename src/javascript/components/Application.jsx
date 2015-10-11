@@ -30,7 +30,8 @@ class Application extends React.Component {
     renderApp () {
         let props = {
             releases: this.props.releases,
-            release: this.props.release
+            release: this.props.release,
+            latest: this.props.latest
         };
         return (
             <div>
@@ -60,7 +61,8 @@ Application = connectToStores(Application, [ApplicationStore, ReleasesStore, Rel
     return {
         route: context.getStore(ApplicationStore).getState(),
         releases: context.getStore(ReleasesStore).getState(),
-        release: context.getStore(ReleaseStore).getState()
+        release: context.getStore(ReleaseStore).getState(),
+        latest: context.getStore(ReleaseStore).getLatest()
     };
 });
 

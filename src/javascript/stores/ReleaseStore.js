@@ -10,10 +10,31 @@ class ReleaseStore extends BaseStore {
         this.release;
     }
 
-    handleGetRelease (catNo) {
+    handleGetRelease (payload) {
+        switch (payload) {
+            case 'LATEST':
+                this.fetchLatest();
+                break;
+            default:
+                this.fetchCatNo(payload);
+                break;
+        }
+    }
+
+    fetchLatest() {
+        let url = 'http://api.archaichorizon.com/releases/latest.json';
+        this.latest ? this.setRelease(catNo) : api(this, url, 'latest');
+    }
+
+    fetchCatNo(catNo) {
         catNo = catNo.toUpperCase();
         let url = 'http://api.archaichorizon.com/releases/' + catNo + '.json';
-        this[catNo] ? console.warn('already fetched') : this.release = api(this, url, catNo);
+        this[catNo] ? this.setRelease(catNo) : api(this, url, catNo);
+    }
+
+    setRelease (release) {
+        console.warn('already fetched ' + release)
+        this.release = this[release];
     }
 
     setState (release, key) {
@@ -24,6 +45,10 @@ class ReleaseStore extends BaseStore {
 
     getState () {
         return this.release;
+    }
+
+    getLatest () {
+        return this.latest;
     }
 
     dehydrate () {
