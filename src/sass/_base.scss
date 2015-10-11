@@ -27,7 +27,7 @@ html {
 // Body reset
 // -----------
 body {
-    @include rem(font-size, $baseFontSize);
+    font-size: 16px;
     font-family: $baseFontFamily;
     color: $textColor;
     background-color: $bodyBackground;
