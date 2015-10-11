@@ -17,6 +17,7 @@
   "browserify": {},
   "devDependencies": {
     "babelify": "^6.2.0",
+    "bluebird": "^2.10.2",
     "body-parser": "^1.14.0",
     "browser-sync": "^2.8.2",
     "browserify": "^11.0.1",
