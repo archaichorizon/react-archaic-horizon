@@ -3,7 +3,7 @@
 import React from 'react';
 
 // Components
-import ReleaseDeck from '../ReleaseDeck';
+import ReleaseDeck from '../releaseDeck/ReleaseDeck';
 
 // Action
 import getRelease from '../../actions/getRelease';
