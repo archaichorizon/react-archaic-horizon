@@ -27,6 +27,7 @@ html {
 // Body reset
 // -----------
 body {
+	padding-top: $navHeight;
     font-size: 16px;
     font-family: $baseFontFamily;
     color: $textColor;

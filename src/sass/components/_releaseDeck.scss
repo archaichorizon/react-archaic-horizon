@@ -1,16 +1,10 @@
 #release-deck {
-	position: relative;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+	@extend %spread;
+	display: flex;
+	align-items: center;
 	overflow: hidden;
 	background: #ccc;
 
-	display: flex;
-	align-items: center;
-
-	
 	.deck-left,
 	.deck-right {
 		position: relative;
@@ -32,9 +26,6 @@
 	.release-tracks {
 		width: 100%;
 	}
-
-
-	
 
 	.release-nav {
 		position: absolute;
