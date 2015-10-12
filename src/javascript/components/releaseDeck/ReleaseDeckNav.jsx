@@ -4,32 +4,40 @@ import {Link} from 'react-router';
 // var ArrowLeft = require('../ui/ArrowLeft.jsx'); 
 // var ArrowRight = require('../ui/ArrowRight.jsx'); 
 
+// Action
+import nextRelease from '../../actions/nextRelease';
+import prevRelease from '../../actions/prevRelease';
+
 export default class ReleaseDeckNav extends React.Component{
 
-    clickNextHandler () {
-        // AppActions.getRelease(this.props.nextRelease);
+    constructor () {
+        super();
+        this.clickNextHandler = this.clickNextHandler.bind(this);
+        this.clickPrevHandler = this.clickPrevHandler.bind(this);
     }
 
     clickPrevHandler () {
-        // AppActions.getRelease(this.props.prevRelease);
+        this.context.executeAction(prevRelease, this.props.current);
+    }
+
+    clickNextHandler () {
+        this.context.executeAction(nextRelease, this.props.current);
     }
 
     render () {
 
-        if (this.props.nextRelease) {
-            var nextRelease = (
-                <Link href={'/releases/' + this.props.nextRelease} onClick={this.clickNextHandler}>
-                    <span className="hide-text">Next Releases: {this.props.nextRelease}</span>
-                    // <ArrowLeft color={this.props.mood.secondary[0]}/>
+        if (this.props.next) {
+            var next = (
+                <Link to={`/releases/${this.props.next}`} onClick={this.clickNextHandler}>
+                    <span className="hide-text">Next Releases: {this.props.next}</span>
                 </Link>
             );
         }
 
-        if (this.props.prevRelease) {
-            var prevRelease = (
-                <Link href={'/releases/' + this.props.prevRelease} onClick={this.clickPrevHandler}>
-                    <span className="hide-text">Previous Releases: {this.props.prevRelease}</span>
-                    // <ArrowRight color={this.props.mood.secondary[0]}/>
+        if (this.props.prev) {
+            var prev = (
+                <Link to={`/releases/${this.props.prev}`} onClick={this.clickPrevHandler}>
+                    <span className="hide-text">Previous Releases: {this.props.prev}</span>
                 </Link>
             );
         }
@@ -37,10 +45,10 @@ export default class ReleaseDeckNav extends React.Component{
         return (
             <nav className="release-nav">
                 <div className="next-release">
-                    {nextRelease}
+                    {next}
                 </div>
                 <div className="prev-release">
-                    {prevRelease}
+                    {prev}
                 </div>
             </nav>
         );
@@ -48,6 +56,10 @@ export default class ReleaseDeckNav extends React.Component{
 };
 
 ReleaseDeckNav.contextTypes = {
+    executeAction: React.PropTypes.func.isRequired,
     nextRelease: React.PropTypes.string,
     prevRelease: React.PropTypes.string
 };
+
+// <ArrowLeft color={this.props.mood.secondary[0]}/>
+// <ArrowRight color={this.props.mood.secondary[0]}/>

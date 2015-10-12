@@ -28,10 +28,13 @@ export default class ReleaseDeck extends React.Component{
             background: 'linear-gradient(30deg, ' + moody.accent[0] + ', ' + moody.primary[0] + ')',
             color: moody.secondary[0]
         };
-
         return (
             <div id="release-deck" style={style}>
-                <ReleaseDeckNav nextRelease={this.props.nextRelease} prevRelease={this.props.prevRelease} mood={this.props.release.palettes.moody}/>
+                <ReleaseDeckNav 
+                    current={this.props.release.cat_no} 
+                    next={this.props.nav.next} 
+                    prev={this.props.nav.prev} 
+                    mood={this.props.release.palettes.moody}/>
                 <div className="deck-left">
                     <div className="release-cover">
                         <img src={this.props.release.covers[0].downloads.JPEG} />
