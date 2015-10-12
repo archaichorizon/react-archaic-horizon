@@ -35,9 +35,7 @@ class Application extends React.Component {
         };
         return (
             <div>
-                <nav>
-                    <Navigation />
-                </nav>
+                <Navigation />
                 <main>
                     {React.cloneElement(this.props.children, props)}
                 </main>
