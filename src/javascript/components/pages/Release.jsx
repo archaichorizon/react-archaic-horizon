@@ -16,7 +16,7 @@ class Release extends React.Component {
     }
 
     render () {
-        return <ReleaseDeck release={this.props.release} />
+        return <ReleaseDeck {...this.props} />
     }
 
 };
