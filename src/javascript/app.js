@@ -23,8 +23,9 @@ app.customContexts = {
     siteUrl: PropTypes.func.isRequired,
 };
 
-app.registerStore(require('./stores/ReleasesStore'));
 app.registerStore(require('./stores/ApplicationStore'));
-app.registerStore(require('./stores/TimeStore'));
+app.registerStore(require('./stores/ReleasesStore'));
+app.registerStore(require('./stores/ReleaseNavStore'));
+app.registerStore(require('./stores/ReleaseStore'));
 
 export default app;

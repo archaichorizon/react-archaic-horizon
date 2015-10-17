@@ -1,9 +1,21 @@
-.navigation {
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $navHeight;
+    width: 100%;
+    background-color: #f3f3f3;
+    z-index: 100;
+}
+
+.nav-links {
     padding: 0;
+    width: 100%;
+    text-align: center;
 
     li {
-        display: block;
-        line-height: 1.5;
+        display: inline-block;
+        margin: 0 1em;
 
         a {
             text-decoration: none;

@@ -15,7 +15,7 @@ a {
 // Body text
 // ----------
 p {
-    margin: 0 0 $baseLineHeight / 2;
+    margin: 0 0 1em;
 }
 
 
@@ -28,16 +28,16 @@ cite { font-style: normal; }
 // Headings
 // ---------
 h1, h2, h3, h4, h5, h6 {
-    margin: ($baseLineHeight / 2) 0;
+    margin: 1em 0;
     font-weight: $headingsFontWeight;
     font-family: $headingsFontFamily;
     line-height: 1;
     color: $headingsColor;
     text-rendering: optimizelegibility; // Fix the character spacing for headings
 }
-h1 { @include rem(font-size, $baseFontSize + 1.4); }
-h2 { @include rem(font-size, $baseFontSize + 0.8); }
-h3 { @include rem(font-size, $baseFontSize + 0.6); }
-h4 { @include rem(font-size, $baseFontSize + 0.4); }
-h5 { @include rem(font-size, $baseFontSize + 0.2); }
-h6 { @include rem(font-size, $baseFontSize); }
+h1 { font-size: 2em }
+h2 { font-size: 1.5em }
+h3 { font-size: 1.4em }
+h4 { font-size: 1.3em }
+h5 { font-size: 1.2em }
+h6 { font-size: 1.1em }

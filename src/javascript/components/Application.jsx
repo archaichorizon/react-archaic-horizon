@@ -2,12 +2,13 @@
 
 import React, {PropTypes} from 'react';
 import Navigation from './Navigation';
-import Timestamp from './Timestamp';
 import {connectToStores}  from 'fluxible-addons-react';
 
 // Store
 import ApplicationStore from '../stores/ApplicationStore';
 import ReleasesStore from '../stores/ReleasesStore';
+import ReleaseNavStore from '../stores/ReleaseNavStore';
+import ReleaseStore from '../stores/ReleaseStore';
 
 // Action
 import getReleases from '../actions/getReleases';
@@ -28,16 +29,19 @@ class Application extends React.Component {
     }
 
     renderApp () {
+        let props = {
+            releases: this.props.releases,
+            release: this.props.release,
+            nav: this.props.nav,
+            latest: this.props.latest
+        };
         return (
             <div>
-                <nav>
-                    <Navigation />
-                </nav>
+                <Navigation />
                 <main>
-                    {React.cloneElement(this.props.children, {releases: this.props.releases})}
+                    {React.cloneElement(this.props.children, props)}
                 </main>
                 <footer>
-                    <Timestamp />
                 </footer>
             </div>
         );
@@ -53,10 +57,12 @@ Application.contextTypes = {
     executeAction: React.PropTypes.func.isRequired
 };
 
-Application = connectToStores(Application, [ApplicationStore, ReleasesStore], (context, props) => {
+Application = connectToStores(Application, [ApplicationStore, ReleasesStore, ReleaseStore], (context, props) => {
     return {
         route: context.getStore(ApplicationStore).getState(),
-        releases: context.getStore(ReleasesStore).getState()
+        releases: context.getStore(ReleasesStore).getState(),
+        nav: context.getStore(ReleaseNavStore).getState(),
+        release: context.getStore(ReleaseStore).getState(),
     };
 });
 
