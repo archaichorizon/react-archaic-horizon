@@ -7,6 +7,7 @@ import {connectToStores}  from 'fluxible-addons-react';
 // Store
 import ApplicationStore from '../stores/ApplicationStore';
 import ReleasesStore from '../stores/ReleasesStore';
+import ReleaseNavStore from '../stores/ReleaseNavStore';
 import ReleaseStore from '../stores/ReleaseStore';
 
 // Action
@@ -60,9 +61,8 @@ Application = connectToStores(Application, [ApplicationStore, ReleasesStore, Rel
     return {
         route: context.getStore(ApplicationStore).getState(),
         releases: context.getStore(ReleasesStore).getState(),
-        nav: context.getStore(ReleasesStore).getNav(),
+        nav: context.getStore(ReleaseNavStore).getState(),
         release: context.getStore(ReleaseStore).getState(),
-        latest: context.getStore(ReleaseStore).getLatest()
     };
 });
 
