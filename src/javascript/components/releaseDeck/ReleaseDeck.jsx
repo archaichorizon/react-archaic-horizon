@@ -48,7 +48,7 @@ export default class ReleaseDeck extends React.Component{
     }
 
     render () {
-        return typeof this.props.release !== 'undefined' ? this.renderRelease() : this.renderLoading();
+        return typeof this.props.release !== 'undefined' && !this.props.fetching ? this.renderRelease() : this.renderLoading();
     }
 }
 

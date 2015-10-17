@@ -2,11 +2,15 @@
 
 import request from'superagent-bluebird-promise';
 
+import fetchingRelease from '../actions/fetchingRelease';
+
 // set release to its catalog 
 let cache = {};
 
 export default function getRelease (actionContext, payload, done) {
     
+    actionContext.executeAction(fetchingRelease, true);
+
     let url;
     payload = payload.toUpperCase();
 
@@ -14,6 +18,7 @@ export default function getRelease (actionContext, payload, done) {
     if(cache[payload]) {
     	// console.log('Cached Response');
     	actionContext.dispatch('GET_RELEASE', cache[payload]);
+        actionContext.executeAction(fetchingRelease, false);
     	done();
     	return;
     }
@@ -37,6 +42,7 @@ export default function getRelease (actionContext, payload, done) {
 		    cache[key] = payload;
 
 			actionContext.dispatch('GET_RELEASE', payload);
+            actionContext.executeAction(fetchingRelease, false);
 			done();
 		}, function(err) {
 			console.warn(err);

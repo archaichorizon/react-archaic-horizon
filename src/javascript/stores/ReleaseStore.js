@@ -6,6 +6,12 @@ class ReleaseStore extends BaseStore {
     constructor (dispatcher) {
         super(dispatcher);
         this.release;
+        this.fetching = false;
+    }
+
+    handleFetching (payload) {
+        this.fetching = payload;
+        this.emitChange();
     }
 
     handleGetRelease (payload) {
@@ -15,6 +21,10 @@ class ReleaseStore extends BaseStore {
     setState (release) {
         this.release = release;
         this.emitChange();
+    }
+
+    getFetching () {
+        return this.fetching;
     }
 
     getState () {
@@ -34,6 +44,7 @@ class ReleaseStore extends BaseStore {
 ReleaseStore.storeName = 'ReleaseStore';
 ReleaseStore.handlers = {
     'GET_RELEASE': 'handleGetRelease',
+    'FETCHING_RELEASE': 'handleFetching',
 };
 
 export default ReleaseStore;
