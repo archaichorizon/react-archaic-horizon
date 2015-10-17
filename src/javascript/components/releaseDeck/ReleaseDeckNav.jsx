@@ -17,11 +17,19 @@ export default class ReleaseDeckNav extends React.Component{
     }
 
     clickPrevHandler () {
-        this.context.executeAction(prevRelease, this.props.current);
+        const payload = { 
+            prev: this.props.prev,
+            current: this.props.current,
+        };
+        this.context.executeAction(prevRelease, payload);
     }
 
     clickNextHandler () {
-        this.context.executeAction(nextRelease, this.props.current);
+        const payload = { 
+            next: this.props.next,
+            current: this.props.current,
+        };
+        this.context.executeAction(nextRelease, payload);
     }
 
     render () {
