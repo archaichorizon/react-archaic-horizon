@@ -11,9 +11,11 @@ class Releases extends React.Component {
                 <h1>Releases page.</h1>
                 <ul>
                     {this.props.releases.map(release => {
-                        return <li key={release.cat_no}>
-                            <Link to={`/releases/${release.cat_no}`}>{release.title}</Link>
-                        </li>;
+                        return (
+                            <li key={release.cat_no}>
+                                <Link to={`/releases/${release.cat_no}`}>{release.title}</Link>
+                            </li>
+                        );
                     })}
                 </ul>
             </article>
