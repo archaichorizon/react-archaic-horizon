@@ -4,7 +4,7 @@
 
 .loader {
 	@extend %spread;
-	background-color: aquamarine;
+	background-color: #eee;
 
 	.loader-svg {
 		@extend %absolute-center;
@@ -28,7 +28,7 @@
 
 @keyframes stroke-width {
 	0% {
-		stroke: aquamarine;
+		stroke: #eee;
 		stroke-width: 2;
 	}
 	50% {
