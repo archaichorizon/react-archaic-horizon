@@ -27,6 +27,11 @@ export default class ReleaseDeck extends React.Component{
             background: 'linear-gradient(30deg, ' + moody.accent[0] + ', ' + moody.primary[0] + ')',
             color: moody.secondary[0]
         };
+
+        let coverStyle = {
+            backgroundColor: moody.primary[2],
+        };
+        
         return (
             <div id="release-deck" style={style}>
                 <ReleaseDeckNav 
@@ -35,7 +40,7 @@ export default class ReleaseDeck extends React.Component{
                     prev={this.props.nav.prev} 
                     mood={this.props.release.palettes.moody}/>
                 <div className="deck-left">
-                    <div className="release-cover">
+                    <div className="release-cover" style={coverStyle}>
                         <img src={this.props.release.covers[0].downloads.JPEG} />
                     </div>
                 </div>
