@@ -9,19 +9,18 @@ let cache = {};
 
 export default function getRelease (actionContext, payload, done) {
     
-    actionContext.executeAction(fetchingRelease, true);
-
-    let url;
     payload = payload.toUpperCase();
-
-    // check cache and return if true
+    
+    // check cache and return release if true
     if(cache[payload]) {
     	// console.log('Cached Response');
     	actionContext.dispatch('GET_RELEASE', cache[payload]);
-        actionContext.executeAction(fetchingRelease, false);
+        // actionContext.executeAction(fetchingRelease, false);
     	done();
     	return;
     }
+
+    let url;
 
     switch (payload) {
         case 'LATEST':
@@ -32,6 +31,8 @@ export default function getRelease (actionContext, payload, done) {
             break;
     }
 	
+    actionContext.executeAction(fetchingRelease, true);
+
 	return request
 		.get(url).then( function(res) {
 			// console.log(res);
