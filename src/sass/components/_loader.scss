@@ -1,0 +1,45 @@
+//
+// Loader
+// ---------------------------
+
+.loader {
+	@extend %spread;
+	background-color: aquamarine;
+
+	.loader-svg {
+		@extend %absolute-center;
+	}
+	.stroke {
+		animation: stroke-width 2s infinite;
+	}
+	.stroke-1 {
+		// animation-delay: 0;
+	}
+	.stroke-2 {
+		animation-delay: 100ms;
+	}
+	.stroke-3 {
+		animation-delay: 200ms;
+	}
+	.stroke-4 {
+		animation-delay: 300ms;
+	}
+}
+
+@keyframes stroke-width {
+	0% {
+		stroke: aquamarine;
+		stroke-width: 2;
+	}
+	50% {
+		stroke: rgba(#333,0);
+		stroke-width: 0;
+	}
+	75% {
+		stroke: #333;
+		stroke-width: 2;
+	}
+	100% {
+		stroke-width: 0;
+	}
+}

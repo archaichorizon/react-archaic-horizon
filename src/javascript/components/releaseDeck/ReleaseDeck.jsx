@@ -3,8 +3,9 @@
 import React from 'react';
 
 // Components
-import ReleaseTracks from './ReleaseTracks.jsx'; 
-import ReleaseDeckNav from './ReleaseDeckNav.jsx';
+import ReleaseTracks from './ReleaseTracks'; 
+import ReleaseDeckNav from './ReleaseDeckNav';
+import Loader from '../ui/Loader';
 
 // Action
 import getRelease from '../../actions/getRelease';
@@ -13,9 +14,7 @@ export default class ReleaseDeck extends React.Component{
 
     renderLoading () {
         return (
-            <div>
-                <h1>loading</h1>
-            </div>
+            <Loader/>
         );
     }
 

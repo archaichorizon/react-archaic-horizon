@@ -2,6 +2,8 @@
 
 import React, {PropTypes} from 'react';
 import Navigation from './Navigation';
+import Loader from './ui/Loader';
+
 import {connectToStores}  from 'fluxible-addons-react';
 
 // Store
@@ -22,9 +24,7 @@ class Application extends React.Component {
 
     renderLoading () {
         return (
-            <div>
-                <h1>loading</h1>
-            </div>
+            <Loader/>
         );
     }
 
