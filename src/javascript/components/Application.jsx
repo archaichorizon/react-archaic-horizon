@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
+
 import Navigation from './Navigation';
 import Loader from './ui/Loader';
 
@@ -42,8 +43,7 @@ class Application extends React.Component {
                 <main>
                     {React.cloneElement(this.props.children, props)}
                 </main>
-                <footer>
-                </footer>
+                <footer/>
             </div>
         );
     }
