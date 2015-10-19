@@ -6,6 +6,7 @@ import React from 'react';
 import ReleaseTracks from './ReleaseTracks'; 
 import ReleaseDeckNav from './ReleaseDeckNav';
 import Loader from '../ui/Loader';
+import AudioPlayer from '../audioPlayer/AudioPlayer';
 
 // Action
 import getRelease from '../../actions/getRelease';
@@ -34,6 +35,8 @@ export default class ReleaseDeck extends React.Component{
         
         return (
             <div id="release-deck" style={style}>
+
+                <AudioPlayer playlist={this.props.release.tracks}/>
                 <ReleaseDeckNav 
                     current={this.props.release.cat_no} 
                     next={this.props.nav.next} 
