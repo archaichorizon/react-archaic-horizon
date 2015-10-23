@@ -36,7 +36,7 @@ export default class ReleaseDeck extends React.Component{
         return (
             <div id="release-deck" style={style}>
 
-                <AudioPlayer playlist={this.props.release.tracks}/>
+                <AudioPlayer playlist={this.props.release.tracks} moody={moody}/>
                 <ReleaseDeckNav 
                     current={this.props.release.cat_no} 
                     next={this.props.nav.next} 

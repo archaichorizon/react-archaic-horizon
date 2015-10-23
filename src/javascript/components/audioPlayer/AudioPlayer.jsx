@@ -304,7 +304,8 @@ class AudioPlayer extends React.Component {
 				<ProgressBar 
 					shorter={songCount > 1} 
 					percent={percent} 
-					seekTo={this.seekTo} />
+					seekTo={this.seekTo}
+					color={this.props.moody.accent[0]} />
 				<VolumeBar 
 					volume={this.state.volume} 
 					adjustVolumeTo={this.adjustVolumeTo} />

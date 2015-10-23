@@ -12,17 +12,25 @@
 	z-index: 100;
 }
 .audio-progress-container {
-	height: 8px;
+	position: relative;
+	height: .5em;
 	background-color: white;
 	cursor: pointer;
-	border-radius: 4px;
-	border: 1px solid #ccc;
 	overflow: hidden;
-	transition: width 100ms;
+	transition: height 100ms;
+	&:hover {
+		height: 1em;
+	}
 
+	.audio-seek-bar,
 	.audio-progress {
-		height: 8px;
-  		background-color: aquamarine;
+		position: absolute;
+		height: 1em;
+		top: 0;
+		left: 0;
+	}
+	.audio-progress {
+		z-index: 1;
 	}
 }
 
