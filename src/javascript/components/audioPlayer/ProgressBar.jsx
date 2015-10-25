@@ -10,7 +10,7 @@ class ProgressBar extends React.Component {
 		super();
 		this.state = {
 			seekBarPercent: 0,
-			seekBarVisible: false
+			seekBarVisible: false,
 		};
 	}
 	seekTo (e) {
@@ -52,11 +52,11 @@ class ProgressBar extends React.Component {
 		const seekStyle = { 
 			display: this.state.seekBarVisible ? 'block' : 'none',
 			width: this.state.seekBarPercent * 100 + "%",
-			backgroundColor: '#eee',
+			backgroundColor: 'rgba(0,0,0,.25)',
 		};
 		const classes = classnames({
-	  		'audio-progress-container': true,
-	  		'audio-progress-container-short-width': this.props.shorter
+	  		'progress-container': true,
+	  		'progress-container-short-width': this.props.shorter
 		});
 		return (
 			<div 
@@ -65,8 +65,8 @@ class ProgressBar extends React.Component {
 				onClick={this.seekTo.bind(this)}
 				onMouseMove={this.seekVisual.bind(this)}
 				onMouseOut={this.seekBarHide.bind(this)}>
-				<div className="audio-progress" style={progressStyle} />
-				<div className="audio-seek-bar" ref="seekBar" style={seekStyle} />
+				<div className="progress" style={progressStyle} />
+				<div className="seek-bar" ref="seekBar" style={seekStyle} />
 			</div>
 		);
 	}

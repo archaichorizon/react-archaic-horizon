@@ -4,59 +4,82 @@
 
 .audio-player {
 	position: fixed;
-	top: 60px;
+	//font-size: 12px;
+	height: 3em;
+	top: 3em;
 	left: 0;
 	width: 100%;
 	background-color: #222;
 	color: #ccc;
 	z-index: 100;
-}
-.audio-progress-container {
-	position: relative;
-	height: .5em;
-	background-color: white;
-	cursor: pointer;
-	overflow: hidden;
-	transition: height 100ms;
-	&:hover {
-		height: 1em;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	.button-panel {
+		margin: 0 1em;
+		.player-btn {
+			display: inline-block;
+			margin: 0 .5em;
+		}
+		svg {
+			display: block;
+		}
 	}
 
-	.audio-seek-bar,
-	.audio-progress {
-		position: absolute;
-		height: 1em;
-		top: 0;
-		left: 0;
+	.progress-container {
+		position: relative;
+		width: 60%;
+		height: .5em;
+		background-color: white;
+		cursor: pointer;
+		overflow: hidden;
+		transition: height 100ms;
+		border-radius: .5em;
+		&:hover {
+			height: .8em;
+			.seek-bar,
+			.progress {
+				height: .8em;
+			}
+		}
+		.seek-bar,
+		.progress {
+			position: absolute;
+			height: .5em;
+			top: 0;
+			left: 0;
+			border-top-right-radius: .5em;
+			border-bottom-right-radius: .5em;
+			transition: height 100ms;
+		}
 	}
-	.audio-progress {
-		z-index: 1;
-	}
-}
+	.volume-bar-container {
+		.volume-bar {
+			display: block;
+			&.volume-bar-hide {
+				display: none;
+			}
+		}
+		.volume-percent-container {
+			position: relative;
+			height: 100px;
+			width: 10px;
+			background: white;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			overflow: hidden;
 
-.audio-volume-bar {
-	display: block;
-	&.audio-volume-bar-hide {
-		display: none;
-	}
-}
-
-.audio-volume-percent-container {
-	position: relative;
-	height: 100px;
-	width: 10px;
-	background: white;
-	cursor: pointer;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	overflow: hidden;
-
-	.audio-volume-percent {
-		width: 10px;
-		background: #333;
-		position: absolute;
-  		top: 100%;
-  		bottom: 0;
-  		transition: top 100ms;
+			.volume-percent {
+				width: 10px;
+				background: #333;
+				position: absolute;
+		  		top: 100%;
+		  		bottom: 0;
+		  		transition: top 100ms;
+			}
+		}
 	}
 }

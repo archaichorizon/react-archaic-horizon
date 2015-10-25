@@ -1,5 +1,6 @@
 var React = require('react/addons');
 var classnames = require('classnames');
+import SvgIcon from '../ui/SvgIcon'; 
 
 var uniqueId = 0;
 
@@ -16,27 +17,27 @@ var VolumeBar = React.createClass({
 		var toggleIcon = this.props.volume === 0 ? "volume-off" : "volume-up";
 
 		var audioVolumeBarClasses = classnames({
-			'audio-volume-bar': true,
-  			'audio-volume-bar-hide': this.state.hide
+			'volume-bar': true,
+  			'volume-bar-hide': this.state.hide
 		});
 
 		var audioVolumeBarContainerId = "audioVolumeBarContainerId" + ++uniqueId;
 		var toggleBtnId = "toggleBtn" + ++uniqueId;
 
 		return (
-			<div id={audioVolumeBarContainerId} ref="audioVolumeBarContainer" className="audio-volume-bar-container">
+			<div id={audioVolumeBarContainerId} ref="audioVolumeBarContainer" className="volume-bar-container">
 				<button id={toggleBtnId} ref="toggleButton" onClick={this.toggle}>
-					Toggle Volume
+					<SvgIcon icon="VOLUME" />
 				</button>
-				<div className="volume-level">Volume: {percent}</div>
+				{/*<div className="volume-level">Volume: {percent}</div>*/}
 				<div className={audioVolumeBarClasses}>
-					<button className="audio-volume-min-max" onClick={this.volumeToMax}>
+					<button className="volume-min-max" onClick={this.volumeToMax}>
 						Volume Up
 					</button>
-					<div ref="audioVolumePercentContainer" className="audio-volume-percent-container" onClick={this.adjustVolumeTo}>
-						<div className="audio-volume-percent" style={style}></div>
+					<div ref="audioVolumePercentContainer" className="volume-percent-container" onClick={this.adjustVolumeTo}>
+						<div className="volume-percent" style={style}></div>
 					</div>
-					<button className="audio-volume-min-max" onClick={this.volumeToMin}>
+					<button className="volume-min-max" onClick={this.volumeToMin}>
 						Mute
 					</button>
 				</div>	
