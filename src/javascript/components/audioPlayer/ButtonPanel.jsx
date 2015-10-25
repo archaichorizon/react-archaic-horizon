@@ -1,36 +1,35 @@
-var React = require('react/addons');
+import React from 'react/addons';
 
-module.exports = React.createClass({
+import SvgIcon from '../ui/SvgIcon'; 
 
-	getDefaultProps: function() {
-		return {
-			currentSongIndex: 0,
-			songCount: 0
-		};
-	},
+const props = {
+	currentSongIndex: 0,
+	songCount: 0,
+};
 
-	render: function() {
-		var isPlaying = this.props.isPlaying;
-		var isPause = this.props.isPause;
-		var isLoading = this.props.isLoading;
-		var isShowPlayBtn = !isPlaying || isPause;
-		var buttonClickHandler = isShowPlayBtn ? this.props.onPlayBtnClick : this.props.onPauseBtnClick;
-		var iconName;
-		var iconClasses = "";
-		var loading = "";
-		var playState;
+class ButtonPanel extends React.Component {
+
+	render () {
+		const isPlaying = this.props.isPlaying;
+		const isPause = this.props.isPause;
+		const isLoading = this.props.isLoading;
+		const showPlayButton = !isPlaying || isPause;
+		const buttonClickHandler = showPlayButton ? this.props.onPlayBtnClick : this.props.onPauseBtnClick;
+		let iconName;
+		let iconClasses = "";
+		let loading = "";
+		let playState;
 
 		if (isLoading) {
 			loading =  "Loading";
 			iconName = "refresh";
-			iconClasses = "audio-refresh-animate";
+			iconClasses = "refresh-animate";
 		} else {
 			loading =  "";
-			playState = isShowPlayBtn ? "Play" : "Pause";
+			playState = showPlayButton ? <SvgIcon icon="PLAY" /> : <SvgIcon icon="PAUSE" />;
 		}
 
-		var songIndex = this.props.currentSongIndex;
-		var buttonPanelClasses = "audio-button-panel pull-left";
+		const songIndex = this.props.currentSongIndex;
 
 		if (this.props.songCount < 2) {
 			return (
@@ -38,22 +37,26 @@ module.exports = React.createClass({
 			);
 		} else {
 
-			var nextButtonClass = songIndex == this.props.songCount - 1 ? "disabled" : "";
+			const nextButtonClass = songIndex == this.props.songCount - 1 ? "disabled" : "";
 			
 			return (
-				<div>
-					<div>{loading}</div>
-					<button onClick={this.props.onPrevBtnClick}>
-						&#x261C;
+				<div className="button-panel">
+					{/*<div>{loading}</div>*/}
+					<button className="player-btn" onClick={this.props.onPrevBtnClick}>
+						<SvgIcon icon="PREV" />
 					</button>
-					<button onClick={buttonClickHandler}>
+					<button className="player-btn" onClick={buttonClickHandler}>
 						{playState}
 					</button>
-					<button onClick={this.props.onNextBtnClick} className={nextButtonClass}>
-						&#x261E;
+					<button onClick={this.props.onNextBtnClick} className={nextButtonClass + ' player-btn'}>
+						<SvgIcon icon="NEXT" />
 					</button>
 				</div>
 			);
 		}
 	}
-});
+};
+
+ButtonPanel.defaultProps = props;
+
+export default ButtonPanel;
