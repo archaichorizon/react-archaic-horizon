@@ -288,10 +288,7 @@ class AudioPlayer extends React.Component {
 		
 		return (
 			<div className="audio-player">		
-				<div className="audio-desc-container clearfix">
-					<NameLabel name={songName} />
-					<TimeLabel seek={this.state.seek} duration={this.state.duration}/>
-				</div>
+				{/*<NameLabel name={songName} />*/}
 				<ButtonPanel isPlaying={this.state.isPlaying} 
 					isPause={this.state.isPause}
 					isLoading={this.state.isLoading}
@@ -306,6 +303,9 @@ class AudioPlayer extends React.Component {
 					percent={percent} 
 					seekTo={this.seekTo}
 					color={this.props.moody.accent[0]} />
+				<TimeLabel 
+					seek={this.state.seek} 
+					duration={this.state.duration} />
 				<VolumeBar 
 					volume={this.state.volume} 
 					adjustVolumeTo={this.adjustVolumeTo} />
