@@ -268,6 +268,7 @@ class AudioPlayer extends React.Component {
  	}
 
  	render () {
+
 		const songCount = this.songCount();
 		let percent = 0;
 
@@ -291,7 +292,6 @@ class AudioPlayer extends React.Component {
 		
 		return (
 			<div className="audio-player">		
-				{/*<NameLabel name={songName} />*/}
 				<ButtonPanel 
 					isPlaying={this.state.isPlaying} 
 					isPause={this.state.isPause}
@@ -302,6 +302,7 @@ class AudioPlayer extends React.Component {
 					onPauseBtnClick={this.onPauseBtnClick}
 					onPrevBtnClick={this.onPrevBtnClick} 
 					onNextBtnClick={this.onNextBtnClick} />
+				<NameLabel name={songName} />
 				<ProgressBar 
 					shorter={songCount > 1} 
 					percent={percent} 

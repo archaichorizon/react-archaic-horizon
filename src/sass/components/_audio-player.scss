@@ -20,7 +20,7 @@
 	align-items: center;
 
 	.button-panel {
-		flex-basis: 10empx;
+		flex-basis: 7.5em;
 		margin: 0 1em;
 		.main-btn {
 			position: relative;
@@ -45,6 +45,15 @@
 		svg {
 			display: block;
 		}
+	}
+
+	.name-label {
+		flex-basis: 10em;
+		flex-grow: 0;
+		overflow: hidden;
+		font-size: 14px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	.progress-container {
