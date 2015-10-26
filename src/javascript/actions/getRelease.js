@@ -3,6 +3,7 @@
 import request from'superagent-bluebird-promise';
 
 import fetchingRelease from '../actions/fetchingRelease';
+import setPlaylist from '../actions/setPlaylist';
 
 // set release to its catalog 
 let cache = {};
@@ -41,6 +42,10 @@ export default function getRelease (actionContext, payload, done) {
 			// cache the response
 		    let key = payload.cat_no;
 		    cache[key] = payload;
+
+            // SET PLAYLIST
+            let playlist = payload.tracks;
+            actionContext.dispatch('SET_PLAYLIST', playlist);
 
 			actionContext.dispatch('GET_RELEASE', payload);
             actionContext.executeAction(fetchingRelease, false);
