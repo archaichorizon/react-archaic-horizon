@@ -1,5 +1,7 @@
 #release-deck {
 	@extend %spread;
+	top: $navHeight * 2;
+	height: auto;
 	display: flex;
 	align-items: center;
 	overflow: hidden;
