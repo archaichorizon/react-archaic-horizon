@@ -18,7 +18,6 @@ class SvgIcon extends React.Component {
 
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.icon !== this.props.icon) {
-			console.log(nextProps.icon);
 			this.setupIcon();
 			this.forceUpdate();
 		}

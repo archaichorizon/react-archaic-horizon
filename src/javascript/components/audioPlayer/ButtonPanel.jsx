@@ -22,7 +22,7 @@ class ButtonPanel extends React.Component {
 			"pause-btn": isPlaying,
 			"loading-btn": isLoading,
 		});
-		// this isn't behaving as expected. need to figure out why.
+		// TODO: this isn't behaving as expected. need to figure out why.
 		// the svg icon doesn't seem to be updating properly
 		if (isPlaying && !isLoading) {
 			return (
