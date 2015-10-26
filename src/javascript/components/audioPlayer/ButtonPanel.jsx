@@ -1,4 +1,5 @@
 import React from 'react/addons';
+import cx from 'classnames';
 
 import SvgIcon from '../ui/SvgIcon'; 
 
@@ -9,51 +10,62 @@ const props = {
 
 class ButtonPanel extends React.Component {
 
-	render () {
-		const isPlaying = this.props.isPlaying;
-		const isPause = this.props.isPause;
+	renderButton () {
+		const isPlaying = this.props.isPlaying && !this.props.isPause;
+		const isPause = this.props.isPause && !this.props.isPlaying;
 		const isLoading = this.props.isLoading;
-		const showPlayButton = !isPlaying || isPause;
-		const buttonClickHandler = showPlayButton ? this.props.onPlayBtnClick : this.props.onPauseBtnClick;
-		let iconName;
-		let iconClasses = "";
-		let loading = "";
-		let playState;
 
-		if (isLoading) {
-			loading =  "Loading";
-			iconName = "refresh";
-			iconClasses = "refresh-animate";
-		} else {
-			loading =  "";
-			playState = showPlayButton ? <SvgIcon icon="PLAY" /> : <SvgIcon icon="PAUSE" />;
-		}
-
-		const songIndex = this.props.currentSongIndex;
-
-		if (this.props.songCount < 2) {
+		const classNames = cx({
+			"player-btn": true,
+			"main-btn": true,
+			"play-btn": isPause,
+			"pause-btn": isPlaying,
+			"loading-btn": isLoading,
+		});
+		// this isn't behaving as expected. need to figure out why.
+		// the svg icon doesn't seem to be updating properly
+		if (isPlaying && !isLoading) {
 			return (
-				<button onClick={buttonClickHandler}>{playState}</button>
+				<button 
+					className={classNames} 
+					onClick={this.props.onPauseBtnClick}>
+						<SvgIcon icon="PAUSE" />
+				</button>
+			);
+		} else if (isLoading) {
+			return (
+				<button 
+					className={classNames}>
+						<SvgIcon icon="PAUSE" />
+				</button>
 			);
 		} else {
-
-			const nextButtonClass = songIndex == this.props.songCount - 1 ? "disabled" : "";
-			
 			return (
-				<div className="button-panel">
-					{/*<div>{loading}</div>*/}
-					<button className="player-btn" onClick={this.props.onPrevBtnClick}>
+				<button 
+					className={classNames} 
+					onClick={this.props.onPlayBtnClick}>
+						<SvgIcon icon="PLAY" />
+				</button>
+			);
+		}
+	}
+
+	render () {
+		return (
+			<div className="button-panel">
+				<button 
+					className="player-btn" 
+					onClick={this.props.onPrevBtnClick}>
 						<SvgIcon icon="PREV" />
-					</button>
-					<button className="player-btn" onClick={buttonClickHandler}>
-						{playState}
-					</button>
-					<button onClick={this.props.onNextBtnClick} className={nextButtonClass + ' player-btn'}>
+				</button>
+				{this.renderButton()}
+				<button 
+					className="player-btn" 
+					onClick={this.props.onNextBtnClick}>
 						<SvgIcon icon="NEXT" />
-					</button>
-				</div>
-			);
-		}
+				</button>
+			</div>
+		);
 	}
 };
 
