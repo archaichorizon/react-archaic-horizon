@@ -3,10 +3,12 @@
 // ---------------------------
 
 .audio-player {
+	$height: $navHeight;
+
 	position: fixed;
 	//font-size: 12px;
-	height: 3em;
-	top: 3em;
+	height: $height;
+	top: $height;
 	left: 0;
 	width: 100%;
 	background-color: #222;
@@ -18,7 +20,24 @@
 	align-items: center;
 
 	.button-panel {
+		flex-basis: 10empx;
 		margin: 0 1em;
+		.main-btn {
+			position: relative;
+			padding: .5em;
+			&:after {
+				@extend %spread;
+				content: '';
+				display: block;
+				border-radius: 50%;
+				border: 2px solid rgba(white, .5);
+			}
+			&.loading-btn:after {
+				border-right: 2px solid transparent;
+				animation: spin 0.5s linear infinite;
+			}
+		}
+
 		.player-btn {
 			display: inline-block;
 			margin: 0 .5em;
@@ -30,7 +49,8 @@
 
 	.progress-container {
 		position: relative;
-		width: 60%;
+		// flex-basis: 60%;
+		flex-grow: 1;
 		height: .5em;
 		background-color: white;
 		cursor: pointer;
@@ -54,6 +74,10 @@
 			border-bottom-right-radius: .5em;
 			transition: height 100ms;
 		}
+	}
+	.audio-time {
+		flex-basis: 8em;
+		text-align: center;
 	}
 	.volume-bar-container {
 		flex-basis: 2em;
