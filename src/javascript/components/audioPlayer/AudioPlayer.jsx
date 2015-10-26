@@ -81,8 +81,10 @@ class AudioPlayer extends React.Component {
 	}
 
 	onPauseBtnClick () {
+		const isPlaying = !this.state.isPlaying;
 		const isPause = !this.state.isPause;
 		this.setState({ 
+			isPlaying: isPlaying, 
 			isPause: isPause 
 		});
 		isPause ? this.pause() : this._play();
@@ -154,7 +156,8 @@ class AudioPlayer extends React.Component {
 			volume: this.state.volume,
 			onload: this.initSoundObjectCompleted,
 			onend: this.playEnd,
-			buffer: true
+			html5: true,
+			preload: true,
 		});
 	}
 
@@ -289,7 +292,8 @@ class AudioPlayer extends React.Component {
 		return (
 			<div className="audio-player">		
 				{/*<NameLabel name={songName} />*/}
-				<ButtonPanel isPlaying={this.state.isPlaying} 
+				<ButtonPanel 
+					isPlaying={this.state.isPlaying} 
 					isPause={this.state.isPause}
 					isLoading={this.state.isLoading}
 					currentSongIndex={this.state.currentSongIndex} 
