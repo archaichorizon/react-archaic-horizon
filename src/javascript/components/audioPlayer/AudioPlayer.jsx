@@ -60,6 +60,13 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentDidUpdate (prevProps, prevState, prevContext) {
+		// set new playlist
+		if (prevProps.playlist !== this.props.playlist) {
+			this.setState({ 
+				songs: this.props.playlist,
+				currentSongIndex: 0 
+			});
+		}
 		if (this.state.isPlaying && this.state.currentSongIndex != prevState.currentSongIndex) {
 			this.initSoundObject();
 		}
