@@ -31,13 +31,13 @@ var VolumeBar = React.createClass({
 				</button>
 				{/*<div className="volume-level">Volume: {percent}</div>*/}
 				<div className={audioVolumeBarClasses}>
-					<button className="volume-min-max" onClick={this.volumeToMax}>
-						Volume Up
+					<button className="volume-max" onClick={this.volumeToMax}>
+						100
 					</button>
 					<div ref="audioVolumePercentContainer" className="volume-percent-container" onClick={this.adjustVolumeTo}>
 						<div className="volume-percent" style={style}></div>
 					</div>
-					<button className="volume-min-max" onClick={this.volumeToMin}>
+					<button className="volume-mute" onClick={this.volumeToMin}>
 						Mute
 					</button>
 				</div>	
