@@ -296,7 +296,6 @@ class AudioPlayer extends React.Component {
 		} else {
 			songName = this.getCurrentSongName();
 		}
-		
 		return (
 			<div className="audio-player">		
 				<ButtonPanel 
@@ -309,8 +308,10 @@ class AudioPlayer extends React.Component {
 					onPauseBtnClick={this.onPauseBtnClick}
 					onPrevBtnClick={this.onPrevBtnClick} 
 					onNextBtnClick={this.onNextBtnClick} />
-				<NameLabel name={songName} />
+				<NameLabel 
+					name={songName} />
 				<ProgressBar 
+					color={this.props.mood.accent[0]}
 					shorter={songCount > 1} 
 					percent={percent} 
 					seekTo={this.seekTo} />

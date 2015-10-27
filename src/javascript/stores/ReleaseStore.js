@@ -21,6 +21,7 @@ class ReleaseStore extends BaseStore {
 
     setState (release) {
         this.release = release;
+        this.mood = release.palettes.moody;
         this.emitChange();
     }
     
