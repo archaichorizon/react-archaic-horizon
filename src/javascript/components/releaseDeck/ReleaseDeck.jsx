@@ -42,7 +42,10 @@ export default class ReleaseDeck extends React.Component{
                     prev={this.props.nav.prev} 
                     mood={this.props.release.palettes.moody}/>
                 <div className="deck-left">
-                    <ReleaseCovers covers={this.props.release.covers} bgColor={moody.secondary[0]}/>
+                    <ReleaseCovers 
+                        playlist={this.props.release.tracks}
+                        covers={this.props.release.covers} 
+                        bgColor={moody.secondary[0]}/>
                 </div>
                 <div className="deck-right">
                     <ReleaseTracks release={this.props.release}/>

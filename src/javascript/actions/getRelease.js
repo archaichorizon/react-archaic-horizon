@@ -44,8 +44,9 @@ export default function getRelease (actionContext, payload, done) {
 		    cache[key] = payload;
 
             // SET PLAYLIST
-            let playlist = payload.tracks;
-            actionContext.dispatch('SET_PLAYLIST', playlist);
+            // set playlist by queueing an album
+            // let playlist = payload.tracks;
+            // actionContext.dispatch('SET_PLAYLIST', playlist);
 
 			actionContext.dispatch('GET_RELEASE', payload);
             actionContext.executeAction(fetchingRelease, false);
