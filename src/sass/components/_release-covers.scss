@@ -3,6 +3,7 @@
 // ---------------------------
 
 .release-covers {
+	position: relative;
 	.play-album-btn {
 		@extend %absolute-center;
 		display: none;

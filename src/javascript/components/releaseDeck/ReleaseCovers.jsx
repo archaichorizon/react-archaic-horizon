@@ -1,5 +1,6 @@
 import React from 'react';
 import SvgIcon from '../ui/SvgIcon'; 
+import Carousel from '../carousel/Carousel'; 
 // Action
 import setPlaylist from '../../actions/setPlaylist';
 
@@ -20,7 +21,7 @@ class ReleaseCovers extends React.Component{
                     onClick={this.handleClick.bind(this)}>
                         <SvgIcon icon="PLAY_LARGE" />
                 </button>
-                <img src={this.props.covers[0].downloads.JPEG} />
+                <Carousel images={this.props.covers} />
             </div>
         );
     }
