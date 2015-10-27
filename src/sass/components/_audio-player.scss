@@ -8,7 +8,7 @@
 	position: fixed;
 	//font-size: 12px;
 	height: $height;
-	top: $height;
+	bottom: 0;
 	left: 0;
 	width: 100%;
 	background-color: #222;
@@ -87,6 +87,7 @@
 	.audio-time {
 		flex-basis: 8em;
 		text-align: center;
+		font-size: 14px;
 	}
 	.volume-bar-container {
 		flex-basis: 2em;
