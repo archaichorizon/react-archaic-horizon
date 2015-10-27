@@ -37,7 +37,7 @@ class Application extends React.Component {
             release: this.props.release,
             nav: this.props.nav,
             latest: this.props.latest,
-            fetching: this.props.fetching,
+            isFetching: this.props.isFetching,
         };
         const player = typeof this.props.playlist !== 'undefined' ? <AudioPlayer playlist={this.props.playlist}/> : null;
         return (
@@ -63,12 +63,14 @@ Application.contextTypes = {
 };
 
 Application = connectToStores(Application, [ApplicationStore, PlayerStore, ReleasesStore, ReleaseStore], (context, props) => {
+    const releaseStore = context.getStore(ReleaseStore).getState()
     return {
         route: context.getStore(ApplicationStore).getState(),
         releases: context.getStore(ReleasesStore).getState(),
         nav: context.getStore(ReleaseNavStore).getState(),
-        release: context.getStore(ReleaseStore).getState(),
-        fetching: context.getStore(ReleaseStore).getFetching(),
+        release: releaseStore.release,
+        isFetching: releaseStore.isFetching,
+        mood: releaseStore.mood,
         playlist: context.getStore(PlayerStore).getState(),
     };
 });

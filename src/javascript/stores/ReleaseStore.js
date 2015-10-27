@@ -6,11 +6,12 @@ class ReleaseStore extends BaseStore {
     constructor (dispatcher) {
         super(dispatcher);
         this.release;
-        this.fetching = false;
+        this.isFetching = false;
+        this.mood;
     }
 
     handleFetching (payload) {
-        this.fetching = payload;
+        this.isFetching = payload;
         this.emitChange();
     }
 
@@ -22,13 +23,13 @@ class ReleaseStore extends BaseStore {
         this.release = release;
         this.emitChange();
     }
-
-    getFetching () {
-        return this.fetching;
-    }
-
+    
     getState () {
-        return this.release;
+        return { 
+            release: this.release,
+            isFetching: this.isFetching,
+            mood: this.mood,
+        }
     }
 
     dehydrate () {
@@ -37,6 +38,8 @@ class ReleaseStore extends BaseStore {
 
     rehydrate (state) {
         this.release = state.release;
+        this.isFetching = state.isFetching;
+        this.mood = state.mood;
     }
 
 }
