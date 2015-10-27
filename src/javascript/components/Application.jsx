@@ -38,6 +38,7 @@ class Application extends React.Component {
             nav: this.props.nav,
             latest: this.props.latest,
             isFetching: this.props.isFetching,
+            mood: this.props.mood,
         };
         const player = typeof this.props.playlist !== 'undefined' ? <AudioPlayer playlist={this.props.playlist}/> : null;
         return (
@@ -62,16 +63,18 @@ Application.contextTypes = {
     executeAction: React.PropTypes.func.isRequired
 };
 
-Application = connectToStores(Application, [ApplicationStore, PlayerStore, ReleasesStore, ReleaseStore], (context, props) => {
+const connectedStores = [ApplicationStore, PlayerStore, ReleasesStore, ReleaseStore];
+
+Application = connectToStores(Application, connectedStores, (context, props) => {
     const releaseStore = context.getStore(ReleaseStore).getState()
     return {
         route: context.getStore(ApplicationStore).getState(),
         releases: context.getStore(ReleasesStore).getState(),
-        nav: context.getStore(ReleaseNavStore).getState(),
         release: releaseStore.release,
         isFetching: releaseStore.isFetching,
         mood: releaseStore.mood,
         playlist: context.getStore(PlayerStore).getState(),
+        nav: context.getStore(ReleaseNavStore).getState(),
     };
 });
 
