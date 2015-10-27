@@ -11,6 +11,7 @@ export default class Navigation extends React.Component{
         var releasesClass = isActive('/releases') ? 'selected' : ''
         return (
             <header>
+                <h1>Archaic Horizon</h1>
                 <nav>
                     <ul className="nav-links">
                         <li className={homeClass}><Link to='/'>Home</Link></li>
