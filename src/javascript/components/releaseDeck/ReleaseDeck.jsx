@@ -3,6 +3,7 @@
 import React from 'react';
 
 // Components
+import ReleaseCovers from './ReleaseCovers'; 
 import ReleaseTracks from './ReleaseTracks'; 
 import ReleaseDeckNav from './ReleaseDeckNav';
 import Loader from '../ui/Loader';
@@ -25,7 +26,7 @@ export default class ReleaseDeck extends React.Component{
 
         let style = {
             backgroundColor: moody.primary[2],
-            background: 'linear-gradient(30deg, ' + moody.accent[0] + ', ' + moody.primary[0] + ')',
+            background: `linear-gradient(${moody.accent[0]}, ${moody.primary[0]})`,
             color: moody.secondary[0]
         };
 
@@ -35,17 +36,13 @@ export default class ReleaseDeck extends React.Component{
         
         return (
             <div id="release-deck" style={style}>
-
-                {/*<AudioPlayer playlist={this.props.release.tracks} moody={moody}/>*/}
                 <ReleaseDeckNav 
                     current={this.props.release.cat_no} 
                     next={this.props.nav.next} 
                     prev={this.props.nav.prev} 
                     mood={this.props.release.palettes.moody}/>
                 <div className="deck-left">
-                    <div className="release-cover" style={coverStyle}>
-                        <img src={this.props.release.covers[0].downloads.JPEG} />
-                    </div>
+                    <ReleaseCovers covers={this.props.release.covers} bgColor={moody.secondary[0]}/>
                 </div>
                 <div className="deck-right">
                     <ReleaseTracks release={this.props.release}/>

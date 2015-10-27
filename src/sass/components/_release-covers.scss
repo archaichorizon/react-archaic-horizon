@@ -1,0 +1,28 @@
+//
+// Release Covers
+// ---------------------------
+
+.release-covers {
+	.play-album-btn {
+		@extend %absolute-center;
+		display: none;
+		padding: 1em;
+		line-height: 0;
+		z-index: 1;
+		&:after {
+			@extend %spread;
+			content: '';
+			display: block;
+			border-radius: 50%;
+			border: 2px solid rgba(white, .5);
+		}
+	}
+	&:hover {
+		.play-album-btn {
+			display: block
+		}
+		img {
+			opacity: 0.8;
+		}
+	}
+}
