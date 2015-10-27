@@ -24,6 +24,7 @@ app.customContexts = {
 };
 
 app.registerStore(require('./stores/ApplicationStore'));
+app.registerStore(require('./stores/PlayerStore'));
 app.registerStore(require('./stores/ReleasesStore'));
 app.registerStore(require('./stores/ReleaseNavStore'));
 app.registerStore(require('./stores/ReleaseStore'));

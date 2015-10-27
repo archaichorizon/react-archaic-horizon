@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-// var ArrowLeft = require('../ui/ArrowLeft.jsx'); 
-// var ArrowRight = require('../ui/ArrowRight.jsx'); 
+import SvgIcon from '../ui/SvgIcon'; 
 
 // Action
 import nextRelease from '../../actions/nextRelease';
@@ -38,6 +37,7 @@ export default class ReleaseDeckNav extends React.Component{
             var next = (
                 <Link to={`/releases/${this.props.next}`} onClick={this.clickNextHandler}>
                     <span className="hide-text">Next Releases: {this.props.next}</span>
+                    <SvgIcon icon="ARROW_LEFT_SMALL" />
                 </Link>
             );
         }
@@ -46,6 +46,7 @@ export default class ReleaseDeckNav extends React.Component{
             var prev = (
                 <Link to={`/releases/${this.props.prev}`} onClick={this.clickPrevHandler}>
                     <span className="hide-text">Previous Releases: {this.props.prev}</span>
+                    <SvgIcon icon="ARROW_RIGHT_SMALL" />
                 </Link>
             );
         }
@@ -65,9 +66,6 @@ export default class ReleaseDeckNav extends React.Component{
 
 ReleaseDeckNav.contextTypes = {
     executeAction: React.PropTypes.func.isRequired,
-    nextRelease: React.PropTypes.string,
-    prevRelease: React.PropTypes.string
+    next: React.PropTypes.string,
+    prev: React.PropTypes.string
 };
-
-// <ArrowLeft color={this.props.mood.secondary[0]}/>
-// <ArrowRight color={this.props.mood.secondary[0]}/>

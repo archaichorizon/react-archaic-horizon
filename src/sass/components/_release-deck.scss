@@ -1,5 +1,8 @@
 #release-deck {
 	@extend %spread;
+	top: $navHeight;
+	bottom: $navHeight;
+	height: auto;
 	display: flex;
 	align-items: center;
 	overflow: hidden;
@@ -21,7 +24,12 @@
 		margin-right: 4em;
 	}
 	.release-cover {
-
+		position: relative;
+		padding-top: 100%;
+		width: 100%;
+		> img {
+			@extend %spread;
+		}
 	}
 	.release-tracks {
 		width: 100%;

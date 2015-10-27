@@ -6,6 +6,12 @@ header {
     width: 100%;
     background-color: #f3f3f3;
     z-index: 100;
+    h1 {
+        position: absolute;
+        left: 1em;
+        font-size: 1em;
+        text-transform: uppercase;
+    }
 }
 
 .nav-links {
@@ -19,10 +25,11 @@ header {
 
         a {
             text-decoration: none;
+            text-transform: uppercase;
         }
 
         a:hover {
-            text-decoration: underline;
+
         }
 
         &.selected a {

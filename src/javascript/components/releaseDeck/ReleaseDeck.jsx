@@ -3,8 +3,11 @@
 import React from 'react';
 
 // Components
-import ReleaseTracks from './ReleaseTracks.jsx'; 
-import ReleaseDeckNav from './ReleaseDeckNav.jsx';
+import ReleaseCovers from './ReleaseCovers'; 
+import ReleaseTracks from './ReleaseTracks'; 
+import ReleaseDeckNav from './ReleaseDeckNav';
+import Loader from '../ui/Loader';
+import AudioPlayer from '../audioPlayer/AudioPlayer';
 
 // Action
 import getRelease from '../../actions/getRelease';
@@ -13,9 +16,7 @@ export default class ReleaseDeck extends React.Component{
 
     renderLoading () {
         return (
-            <div>
-                <h1>loading</h1>
-            </div>
+            <Loader/>
         );
     }
 
@@ -25,9 +26,14 @@ export default class ReleaseDeck extends React.Component{
 
         let style = {
             backgroundColor: moody.primary[2],
-            background: 'linear-gradient(30deg, ' + moody.accent[0] + ', ' + moody.primary[0] + ')',
+            background: `linear-gradient(${moody.accent[0]}, ${moody.primary[0]})`,
             color: moody.secondary[0]
         };
+
+        let coverStyle = {
+            backgroundColor: moody.primary[2],
+        };
+        
         return (
             <div id="release-deck" style={style}>
                 <ReleaseDeckNav 
@@ -36,9 +42,10 @@ export default class ReleaseDeck extends React.Component{
                     prev={this.props.nav.prev} 
                     mood={this.props.release.palettes.moody}/>
                 <div className="deck-left">
-                    <div className="release-cover">
-                        <img src={this.props.release.covers[0].downloads.JPEG} />
-                    </div>
+                    <ReleaseCovers 
+                        playlist={this.props.release.tracks}
+                        covers={this.props.release.covers} 
+                        bgColor={moody.secondary[0]}/>
                 </div>
                 <div className="deck-right">
                     <ReleaseTracks release={this.props.release}/>
@@ -48,7 +55,7 @@ export default class ReleaseDeck extends React.Component{
     }
 
     render () {
-        return typeof this.props.release !== 'undefined' ? this.renderRelease() : this.renderLoading();
+        return typeof this.props.release !== 'undefined' && !this.props.isFetching ? this.renderRelease() : this.renderLoading();
     }
 }
 

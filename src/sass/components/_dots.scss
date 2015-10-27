@@ -1,0 +1,26 @@
+//
+// Dots
+// ---------------------------
+
+.dots {
+	$width: .625em;
+	$height: .625em;
+	
+	position: absolute;
+	bottom: -($height * 3);
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+
+	.dot {
+		display: inline-block;
+		margin: 0 $width / 2;
+		width: $width;
+		height: $height;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+}

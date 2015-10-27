@@ -15,6 +15,7 @@
 // Use with caution if app needs to support oldIE (6,7,8)
 // Updated inheritence version: http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts#comment-50223
 html {
+	min-height: 100%;
     box-sizing: border-box;
     font-size: 62.5%;
 }
@@ -27,6 +28,7 @@ html {
 // Body reset
 // -----------
 body {
+	min-height: 100%;
 	padding-top: $navHeight;
     font-size: 16px;
     font-family: $baseFontFamily;

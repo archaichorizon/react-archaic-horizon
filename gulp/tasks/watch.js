@@ -9,6 +9,7 @@ var config = require('../config');
 
 var sassTask = require('./sass');
 var imagesTask = require('./images');
+var fontsTask = require('./fonts');
 
 gulp.task('watch', ['watchify'], function (callback) {
 
@@ -21,6 +22,11 @@ gulp.task('watch', ['watchify'], function (callback) {
         name: 'watch-images',
         read: false
     }, imagesTask);
+
+    watch(config.fonts.src, {
+        name: 'watch-fonts',
+        read: false
+    }, fontsTask);
 
     callback();
 
