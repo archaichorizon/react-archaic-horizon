@@ -40,11 +40,11 @@ class Application extends React.Component {
             isFetching: this.props.isFetching,
             mood: this.props.mood,
         };
-        const player = typeof this.props.playlist !== 'undefined' ? <AudioPlayer playlist={this.props.playlist}/> : null;
+        const audioPlayer = typeof this.props.playlist !== 'undefined' ? <AudioPlayer playlist={this.props.playlist} mood={this.props.mood}/> : null;
         return (
             <div>
                 <Navigation />
-                {player}
+                {audioPlayer}
                 <main>
                     {React.cloneElement(this.props.children, props)}
                 </main>
