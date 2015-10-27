@@ -66,6 +66,6 @@ export default class ReleaseDeckNav extends React.Component{
 
 ReleaseDeckNav.contextTypes = {
     executeAction: React.PropTypes.func.isRequired,
-    nextRelease: React.PropTypes.string,
-    prevRelease: React.PropTypes.string
+    next: React.PropTypes.string,
+    prev: React.PropTypes.string
 };
