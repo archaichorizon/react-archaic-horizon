@@ -1,11 +1,15 @@
-var React = require('react/addons');
+import React, {PropTypes} from 'react';
 
-var NameLabel = React.createClass({
-	render: function() {
+class NameLabel extends React.Component {
+	render () {
 		return (
 			<div className="name-label"><strong>{this.props.name}</strong></div>
 		);
 	}
-});
+}
 
-module.exports = NameLabel;
+NameLabel.propTypes = {
+    name: PropTypes.string.isRequired,
+}
+
+export default NameLabel;
