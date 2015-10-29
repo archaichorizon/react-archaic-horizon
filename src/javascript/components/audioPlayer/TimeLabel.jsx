@@ -1,53 +1,58 @@
-var React = require('react/addons');
+import React, {PropTypes} from 'react';
 
-var TimeLabel = React.createClass({
+class TimeLabel extends React.Component {
 
-	secondsToTime: function(secs) {
-		secs = Math.round(secs);
-        var hours = Math.floor(secs / (60 * 60));
+    secondsToTime (secs) {
+        secs = Math.round(secs);
+        const hours = Math.floor(secs / (60 * 60));
 
-        var divisor_for_minutes = secs % (60 * 60);
-        var minutes = Math.floor(divisor_for_minutes / 60);
+        const divisorForMinutes = secs % (60 * 60);
+        const minutes = Math.floor(divisorForMinutes / 60);
 
-        var divisor_for_seconds = divisor_for_minutes % 60;
-        var seconds = Math.ceil(divisor_for_seconds);
+        const divisorForSeconds = divisorForMinutes % 60;
+        const seconds = Math.ceil(divisorForSeconds);
 
-        var time = "";
+        let time = '';
 
         if (hours > 0) {
-          time += hours + ":";
+            time += hours + ':';
         }
 
-        time += this.timeUnitFormat(minutes) + ":";
+        time += this.timeUnitFormat(minutes) + ':';
         time += this.timeUnitFormat(seconds);
-        return time; 
-	},
 
-    timeUnitFormat:function(time) {
+        return time;
+    }
+
+    timeUnitFormat (time) {
         if (time < 1) {
-            return "00";
+            return '00';
         } else if (time < 10) {
-            return "0" + time;
-        } else {
-            return time;
+            return '0' + time;
         }
-    },
-	
-	render: function() {
-		var classes = "audio-time pull-right";
-		if (this.props.seek === undefined || !this.props.duration) {
-			return (
-				<span className={classes}>00:00 / 00:00</span>
-			);
-		}
+        return time;
+    }
+    
+    render () {
+        const className = 'audio-time';
+        if (this.props.seek === 'undefined' || !this.props.duration) {
+            return (
+                <span className={className}>00:00 / 00:00</span>
+            );
+        }
 
-		var seek = this.secondsToTime(this.props.seek);
-		var duration = this.secondsToTime(this.props.duration);
-		return (
-			<span className={classes}>{seek} / {duration}</span>
-		);
-	}
+        var seek = this.secondsToTime(this.props.seek);
+        var duration = this.secondsToTime(this.props.duration);
+        return (
+            <span className={className}>{seek} / {duration}</span>
+        );
+    }
+}
 
-});
+TimeLabel.propTypes = {
+    seek: PropTypes.number,
+    duration: PropTypes.number,
+    seekTo: PropTypes.number,
+};
 
-module.exports = TimeLabel;
+export default TimeLabel;
