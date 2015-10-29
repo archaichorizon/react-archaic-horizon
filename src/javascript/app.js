@@ -3,18 +3,12 @@
 import Fluxible from 'fluxible';
 import {PropTypes} from 'react';
 import Routes from './components/Routes.jsx';
-import fetchrPlugin from 'fluxible-plugin-fetchr';
 
 let assetUrl = require('./libs/assetUrl');
 
 let app = new Fluxible({
     component: Routes
 });
-
-// https://github.com/yahoo/fluxible-plugin-fetchr
-app.plug(fetchrPlugin({
-	corsPath: 'http://api.archaichorizon.com'
-}));
 
 app.plug(assetUrl);
 
