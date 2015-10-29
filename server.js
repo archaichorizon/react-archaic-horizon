@@ -27,15 +27,6 @@ expressState.extend(server);
 server.use(bodyParser.json());
 server.use('/', express.static(__dirname + '/build'));
 
-// Get access to the fetchr plugin instance
-var fetchrPlugin = app.getPlugin('FetchrPlugin');
-
-// Register our messages REST service
-// fetchrPlugin.registerService(getReleases);
-
-// Set up the fetchr middleware
-server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
-
 server.use(function (req, res, next) {
     var location = createLocation(req.url);
 
