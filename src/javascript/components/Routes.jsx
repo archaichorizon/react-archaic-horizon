@@ -1,7 +1,5 @@
-'use strict';
-
 import React from 'react';
-import { Router, Route, Link } from 'react-router'
+import {Router, Route} from 'react-router';
 
 // Routes
 import Application from './Application';
@@ -19,4 +17,5 @@ export default (
         <Route path="/releases/:catNo" component={Release} />
         <Route path="*" component={NotFound} />
     </Router>
-)
+);
+
