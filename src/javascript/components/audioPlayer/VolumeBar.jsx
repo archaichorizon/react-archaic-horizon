@@ -14,7 +14,7 @@ class VolumeBar extends React.Component {
         };
 
         this.toggle = this.toggle.bind(this);
-        this.adjustVolumeTo = this.adjustVolumeTo.bind(this).
+        this.adjustVolumeTo = this.adjustVolumeTo.bind(this);
         this.volumeToMax = this.volumeToMax.bind(this);
         this.volumeToMin = this.volumeToMin.bind(this);
     }
