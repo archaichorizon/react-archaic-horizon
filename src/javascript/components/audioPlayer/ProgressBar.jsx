@@ -14,7 +14,7 @@ class ProgressBar extends React.Component {
         if (!this.props.percent) {
             return;
         }
-        const container = this.refs.progressBar.getDOMNode();
+        const container = this.refs.progressBar;
         const containerStartX = container.getBoundingClientRect().left;
         let percent = (e.clientX - containerStartX) / container.offsetWidth;
         percent = percent >= 1 ? 1 : percent;
@@ -25,7 +25,7 @@ class ProgressBar extends React.Component {
         if (!this.props.percent) {
             return;
         }
-        const container = this.refs.progressBar.getDOMNode();
+        const container = this.refs.progressBar;
         const containerStartX = container.getBoundingClientRect().left;
         let percent = (e.clientX - containerStartX) / container.offsetWidth;
         percent = percent >= 1 ? 1 : percent;

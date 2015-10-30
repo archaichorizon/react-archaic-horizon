@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react/addons';
+import React, {PropTypes} from 'react';
 import ButtonPanel from './ButtonPanel.jsx';
 import ProgressBar from './ProgressBar.jsx';
 import VolumeBar from './VolumeBar.jsx';
@@ -151,8 +151,8 @@ class AudioPlayer extends React.Component {
 
     initSoundObject () {
         this.clearSoundObject();
-        this.setState({ 
-            isLoading: true 
+        this.setState({
+            isLoading: true
         });
 
         const song = this.state.songs[this.state.currentSongIndex];

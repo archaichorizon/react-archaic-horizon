@@ -1,4 +1,4 @@
-var React = require('react/addons');
+var React = require('react');
 var SongItem = require("./SongItem.jsx");
 var classnames = require('classnames');
 
@@ -37,12 +37,12 @@ var SongList = React.createClass({
 			var songName = this.getSongName(song);
 			var songName = songCount > 1 ? (index + 1) + ". " + songName : songName;
 
-			return <SongItem currentSongIndex={currentSongIndex} 
+			return <SongItem currentSongIndex={currentSongIndex}
 				key={'song-' + index}
-				eventKey={index} 
+				eventKey={index}
 				name={songName}
-				isPlaying={isPlaying} 
-				isPause={isPause} 
+				isPlaying={isPlaying}
+				isPause={isPause}
 				onSongItemClick={this.props.onSongItemClick.bind(null, index)} /> ;
 		}, this);
 
