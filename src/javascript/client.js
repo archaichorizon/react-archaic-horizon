@@ -1,12 +1,10 @@
-'use strict';
-
 import polyfill from 'babel/polyfill';
 
 import _ from 'lodash';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'react-router';
-import { FluxibleComponent } from 'fluxible-addons-react';
 import app from './app';
 import navigateAction from './actions/navigate';
 
@@ -40,7 +38,7 @@ function renderApp(context, app) {
 
     let RouterWithContext = provideContext(Router, app.customContexts);
 
-    React.render(
+    ReactDOM.render(
             <RouterWithContext
                 context={context.getComponentContext()}
                 history={createBrowserHistory()}
