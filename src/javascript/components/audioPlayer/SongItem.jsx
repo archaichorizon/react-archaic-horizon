@@ -1,4 +1,4 @@
-var React = require('react/addons');
+var React = require('react');
 var classnames = require('classnames');
 
 var SongItem = React.createClass({
@@ -15,14 +15,14 @@ var SongItem = React.createClass({
 		}
 
 		components[1] = <span key={'track-name'} className="audio-song-item-label" >{this.props.name}</span>;
-		
+
 		var classes = classnames({
 	  		'audio-song-item': true,
 	  		'active': isSelected,
 		});
 
 		return (
-			<div className={classes} eventKey={this.props.eventKey} onClick={this.props.onSongItemClick} > 
+			<div className={classes} eventKey={this.props.eventKey} onClick={this.props.onSongItemClick} >
 				{ components }
 			</div>
 		);
