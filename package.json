@@ -1,18 +1,18 @@
 {
-  "name": "react-gulp-starter",
+  "name": "react-archaic-horizon",
   "version": "0.2.0",
   "engines": {
     "node": ">=0.12"
   },
-  "private": true,
-  "description": "React-Gulp starter with common tasks and scenarios",
+  "private": false,
+  "description": "Archaic Horizon built with React and Fluxible",
   "scripts": {
     "postinstall": "gulp production",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/MadeInHaus/react-gulp-starter.git"
+    "url": "git://github.com/jscottsmith/react-archaic-horizon.git"
   },
   "browserify": {},
   "devDependencies": {
