@@ -6,9 +6,9 @@
 
 ##### Primary dependencies
 
-- [react](https://facebook.github.io/react/) 0.13
+- [react](https://facebook.github.io/react/) 0.14.1
 - [react-router](https://github.com/rackt/react-router) 0.13
-- [fluxible](http://fluxible.io/) 0.4
+- [fluxible](http://fluxible.io/) 1.0
 - [lodash](https://lodash.com/) 3.6
 - [express](http://expressjs.com/) 4.12
 
