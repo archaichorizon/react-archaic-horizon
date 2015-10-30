@@ -75,7 +75,7 @@ ProgressBar.defaultProps = {
 ProgressBar.propTypes = {
     color: PropTypes.string,
     percent: PropTypes.number,
-    seekTo: PropTypes.number,
+    seekTo: PropTypes.func,
 };
 
 export default ProgressBar;
