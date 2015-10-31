@@ -3,10 +3,10 @@ import {Link} from 'react-router';
 
 export default class Navigation extends React.Component {
     render () {
-        var isActive = this.context.history.isActive;
-        var homeClass = isActive('/') ? 'selected' : '';
-        var aboutClass = isActive('/about') ? 'selected' : '';
-        var releasesClass = isActive('/releases') ? 'selected' : '';
+        const isActive = this.context.history.isActive;
+        const homeClass = isActive('/') ? 'selected' : '';
+        const aboutClass = isActive('/about') ? 'selected' : '';
+        const releasesClass = isActive('/releases') ? 'selected' : '';
         return (
             <header>
                 <h1>Archaic Horizon</h1>
