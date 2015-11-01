@@ -4,7 +4,7 @@ import ProgressBar from './ProgressBar.jsx';
 import VolumeBar from './VolumeBar.jsx';
 import TimeLabel from './TimeLabel.jsx';
 import NameLabel from './NameLabel.jsx';
-import SongList from './SongList.jsx';
+import Playlist from './Playlist.jsx';
 // import AppPlayerStore from '../../stores/AppPlayerStore';
 import {Howl} from '../../vendor/howler.core';
 
@@ -20,7 +20,7 @@ class AudioPlayer extends React.Component {
             volume: 0.5
         };
 
-        this.getSongName = this.getSongName.bind(this);
+        this.getSongTitle = this.getSongTitle.bind(this);
         this.onPlayBtnClick = this.onPlayBtnClick.bind(this);
         this.onPauseBtnClick = this.onPauseBtnClick.bind(this);
         this.onPrevBtnClick = this.onPrevBtnClick.bind(this);
@@ -45,7 +45,7 @@ class AudioPlayer extends React.Component {
         this.seekTo = this.seekTo.bind(this);
         this.adjustVolumeTo = this.adjustVolumeTo.bind(this);
         this.songCount = this.songCount.bind(this);
-        this.getCurrentSongName = this.getCurrentSongName.bind(this);
+        this.getCurrentSongTitle = this.getCurrentSongTitle.bind(this);
     }
 
     componentWillMount () {
@@ -72,7 +72,7 @@ class AudioPlayer extends React.Component {
         }
     }
 
-    getSongName (song) {
+    getSongTitle (song) {
         if (song.hasOwnProperty('title')) {
             return song.title;
         }
@@ -267,12 +267,12 @@ class AudioPlayer extends React.Component {
         return this.state.songs ? this.state.songs.length : 0;
     }
 
-    getCurrentSongName () {
+    getCurrentSongTitle () {
         if (this.state.currentSongIndex < 0) {
             return '';
         }
         const song = this.state.songs[this.state.currentSongIndex];
-        return this.getSongName(song);
+        return this.getSongTitle(song);
     }
 
     render () {
@@ -283,45 +283,46 @@ class AudioPlayer extends React.Component {
             percent = this.state.seek / this.state.duration;
         }
 
-        let songName;
-        if (this.songCount() > 1) {
-            const songList = (
-                <SongList ref="songList"
-                    songs={this.state.songs}
-                    currentSongIndex={this.state.currentSongIndex}
-                    isPlaying={this.state.isPlaying} isPause={this.state.isPause}
-                    onSongItemClick={this.onSongItemClick}/>
-            );
-            songName = `${(this.state.currentSongIndex + 1)}. ${this.getCurrentSongName()}`;
-        } else {
-            songName = this.getCurrentSongName();
-        }
+        let title = `${(this.state.currentSongIndex + 1)}. ${this.getCurrentSongTitle()}`;
+
         return (
-            <div className="audio-player">
-                <ButtonPanel
-                    isPlaying={this.state.isPlaying}
-                    isPause={this.state.isPause}
-                    isLoading={this.state.isLoading}
-                    currentSongIndex={this.state.currentSongIndex}
-                    songCount={songCount}
-                    onPlayBtnClick={this.onPlayBtnClick}
-                    onPauseBtnClick={this.onPauseBtnClick}
-                    onPrevBtnClick={this.onPrevBtnClick}
-                    onNextBtnClick={this.onNextBtnClick} />
-                <NameLabel
-                    name={songName} />
-                <ProgressBar
-                    color={this.props.mood.accent[0]}
-                    shorter={songCount > 1}
-                    percent={percent}
-                    seekTo={this.seekTo} />
-                <TimeLabel
-                    seek={this.state.seek}
-                    duration={this.state.duration} />
-                <VolumeBar
-                    volume={this.state.volume}
-                    adjustVolumeTo={this.adjustVolumeTo} />
-                {/* songList */}
+            <div>
+                <div className="audio-player">
+                    <ButtonPanel
+                        isPlaying={this.state.isPlaying}
+                        isPause={this.state.isPause}
+                        isLoading={this.state.isLoading}
+                        currentSongIndex={this.state.currentSongIndex}
+                        songCount={songCount}
+                        onPlayBtnClick={this.onPlayBtnClick}
+                        onPauseBtnClick={this.onPauseBtnClick}
+                        onPrevBtnClick={this.onPrevBtnClick}
+                        onNextBtnClick={this.onNextBtnClick} />
+                    <NameLabel
+                        title={title}
+                        artist={this.state.songs[this.state.currentSongIndex].creator} />
+                    <ProgressBar
+                        color={this.props.mood.accent[0]}
+                        shorter={songCount > 1}
+                        percent={percent}
+                        seekTo={this.seekTo} />
+                    <TimeLabel
+                        seek={this.state.seek}
+                        duration={this.state.duration} />
+                    <VolumeBar
+                        volume={this.state.volume}
+                        adjustVolumeTo={this.adjustVolumeTo} />
+
+                </div>
+                <div className="playlist">
+                    <Playlist
+                        ref="songList"
+                        songs={this.state.songs}
+                        currentSongIndex={this.state.currentSongIndex}
+                        isPlaying={this.state.isPlaying}
+                        isPause={this.state.isPause}
+                        onSongItemClick={this.onSongItemClick}/>
+                </div>
             </div>
         );
     }
