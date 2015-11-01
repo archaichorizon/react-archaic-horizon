@@ -32,7 +32,7 @@ class TimeLabel extends React.Component {
         }
         return time;
     }
-    
+
     render () {
         const className = 'audio-time';
         if (this.props.seek === 'undefined' || !this.props.duration) {
@@ -52,7 +52,6 @@ class TimeLabel extends React.Component {
 TimeLabel.propTypes = {
     seek: PropTypes.number,
     duration: PropTypes.number,
-    seekTo: PropTypes.number,
 };
 
 export default TimeLabel;
