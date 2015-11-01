@@ -10,6 +10,7 @@ class ProgressBar extends React.Component {
             seekBarVisible: false,
         };
     }
+
     seekTo (e) {
         if (!this.props.percent) {
             return;
