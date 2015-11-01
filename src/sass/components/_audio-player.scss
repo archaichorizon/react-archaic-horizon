@@ -57,6 +57,21 @@
         font-size: 14px;
         white-space: nowrap;
         text-overflow: ellipsis;
+
+        .title {
+            display: block;
+        }
+        .artist {
+            display: none;
+        }
+        &:hover {
+            .title {
+                display: none;
+            }
+            .artist {
+                display: block;
+            }
+        }
     }
 
     .progress-container {
