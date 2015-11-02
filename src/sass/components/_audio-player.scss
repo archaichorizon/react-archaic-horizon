@@ -112,16 +112,23 @@
     }
 
     .volume-bar-container {
+        position: relative;
         flex-basis: 2em;
+        height: $height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .volume-bar {
             display: block;
             position: absolute;
             padding: .5em 0;
             bottom: $height;
-            right: 0;
+            left: 50%;
             width: 3em;
-            background-color: #222;
+            background-color: #202020;
             text-align: center;
+            z-index: 1000;
+            transform: translateX(-50%);
             &.volume-bar-hide {
                 display: none;
             }
@@ -162,5 +169,10 @@
                 }
             }
         }
+    }
+
+    .toggle-playlist {
+        flex-basis: 2em;
+        height: $height;
     }
 }
