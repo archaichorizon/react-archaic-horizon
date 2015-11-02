@@ -5,6 +5,7 @@ import VolumeBar from './VolumeBar.jsx';
 import TimeLabel from './TimeLabel.jsx';
 import NameLabel from './NameLabel.jsx';
 import Playlist from './Playlist.jsx';
+import SvgIcon from '../ui/SvgIcon.jsx';
 // import AppPlayerStore from '../../stores/AppPlayerStore';
 import {Howl} from '../../vendor/howler.core';
 
@@ -16,6 +17,7 @@ class AudioPlayer extends React.Component {
             isPlaying: false,
             isPause: false,
             isLoading: false,
+            isPlaylistVisible: false,
             currentSongIndex: -1,
             volume: 0.5
         };
@@ -25,7 +27,7 @@ class AudioPlayer extends React.Component {
         this.onPauseBtnClick = this.onPauseBtnClick.bind(this);
         this.onPrevBtnClick = this.onPrevBtnClick.bind(this);
         this.onNextBtnClick = this.onNextBtnClick.bind(this);
-        this.onSongItemClick = this.onSongItemClick.bind(this);
+        this.onPlaylistItemClick = this.onPlaylistItemClick.bind(this);
 
         this.play = this.play.bind(this);
         this.initSoundObject = this.initSoundObject.bind(this);
@@ -46,6 +48,7 @@ class AudioPlayer extends React.Component {
         this.adjustVolumeTo = this.adjustVolumeTo.bind(this);
         this.songCount = this.songCount.bind(this);
         this.getCurrentSongTitle = this.getCurrentSongTitle.bind(this);
+        this.handleTogglePlaylist = this.handleTogglePlaylist.bind(this);
     }
 
     componentWillMount () {
@@ -104,7 +107,7 @@ class AudioPlayer extends React.Component {
         this.next();
     }
 
-    onSongItemClick (songIndex) {
+    onPlaylistItemClick (songIndex) {
         // handle pause/playing state.
         if (this.state.currentSongIndex === songIndex) {
             if (this.state.isPause) {
@@ -275,6 +278,12 @@ class AudioPlayer extends React.Component {
         return this.getSongTitle(song);
     }
 
+    handleTogglePlaylist () {
+        this.setState({
+            isPlaylistVisible: !this.state.isPlaylistVisible
+        });
+    }
+
     render () {
         const songCount = this.songCount();
         let percent = 0;
@@ -312,16 +321,21 @@ class AudioPlayer extends React.Component {
                     <VolumeBar
                         volume={this.state.volume}
                         adjustVolumeTo={this.adjustVolumeTo} />
-
+                    <button
+                        className="toggle-playlist"
+                        onClick={this.handleTogglePlaylist}>
+                            <SvgIcon icon="PLAYLIST" />
+                    </button>
                 </div>
-                <div className="playlist">
+                <div className="playlist-container">
                     <Playlist
                         ref="songList"
                         songs={this.state.songs}
                         currentSongIndex={this.state.currentSongIndex}
+                        isPlaylistVisible={this.state.isPlaylistVisible}
                         isPlaying={this.state.isPlaying}
                         isPause={this.state.isPause}
-                        onSongItemClick={this.onSongItemClick}/>
+                        onPlaylistItemClick={this.onPlaylistItemClick}/>
                 </div>
             </div>
         );
