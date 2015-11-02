@@ -1,31 +1,14 @@
 import React, {PropTypes} from 'react';
-import SongItem from './SongItem.jsx';
+import PlaylistItem from './PlaylistItem.jsx';
 import cx from 'classnames';
 
 class Playlist extends React.Component {
-
-    constructor () {
-        super();
-        this.state = {
-            playlistVisible: false
-        };
-    }
 
     getSongName (song) {
         if (song.hasOwnProperty('title')) {
             return song.title;
         }
         return 'Untitled';
-    }
-
-    handleClick () {
-        this.setState({
-            playlistVisible: !this.state.playlistVisible
-        });
-    }
-
-    hideDropdownMenu () {
-        this.refs.dropdownButton.setDropdownState(false);
     }
 
     renderSongs () {
@@ -39,13 +22,15 @@ class Playlist extends React.Component {
             // let songName = songCount > 1 ? (index + 1) + '. ' + songName : songName;
 
             return (
-                <SongItem currentSongIndex={currentSongIndex}
+                <PlaylistItem
+                    currentSongIndex={currentSongIndex}
                     key={'song-' + index}
                     eventKey={index}
                     name={songName}
                     isPlaying={isPlaying}
                     isPause={isPause}
-                    onSongItemClick={this.props.onSongItemClick.bind(null, index)} />);
+                    duration={this.props.duration}
+                    onPlaylistItemClick={this.props.onPlaylistItemClick.bind(null, index)} />);
         }, this);
 
         return songs;
@@ -54,23 +39,21 @@ class Playlist extends React.Component {
     render () {
         var playlistClasses = cx({
             playlist: true,
-            'playlist-hidden': !this.state.playlistVisible
+            'is-hidden': !this.props.isPlaylistVisible
         });
 
         return (
-            <div>
-                <button className="toggle-playlist" onClick={this.handleClick.bind(this)}>Toggle Playlist</button>
-                <div className={playlistClasses}>
-                    {this.renderSongs()}
-                </div>
-            </div>
+            <ol className={playlistClasses}>
+                {this.renderSongs()}
+            </ol>
         );
     }
 }
 
 Playlist.propTypes = {
-    onSongItemClick: PropTypes.func.isRequired,
+    onPlaylistItemClick: PropTypes.func.isRequired,
     currentSongIndex: PropTypes.number.isRequired,
+    isPlaylistVisible: PropTypes.bool.isRequired,
     isPlaying: PropTypes.bool.isRequired,
     isPause: PropTypes.bool.isRequired,
     songs: PropTypes.array.isRequired,

@@ -1,0 +1,38 @@
+//
+// Playlist
+// ---------------------------
+
+.playlist-container {
+    position: fixed;
+    bottom: $navHeight;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+    .playlist {
+        margin: 0;
+        padding: 0;
+        display: block;
+
+        &.is-hidden {
+            display: none;
+        }
+
+        .track {
+            padding-left: 1em;
+            list-style-type: none;
+            line-height: 3em;
+            border-bottom: 1px solid #333;
+            background-color: #202020;
+            color: #ccc;
+            cursor: pointer;
+            &:hover {
+                background-color: #222;
+            }
+            &.is-playing {}
+            &.is-selected {
+                color: #fff;
+            }
+        }
+    }
+}
