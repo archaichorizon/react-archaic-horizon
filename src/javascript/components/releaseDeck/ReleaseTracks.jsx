@@ -1,11 +1,11 @@
 import React from 'react';
+import SvgIcon from '../ui/SvgIcon';
 
-export default class ReleaseTracks extends React.Component{
-
-	constructor () {
-		super();
-		this.handleClick = this.handleClick.bind(this);
-	}
+export default class ReleaseTracks extends React.Component {
+    constructor () {
+        super();
+        this.handleClick = this.handleClick.bind(this);
+    }
 
     handleClick (index) {
         let track = this.props.release.tracks[index];
@@ -13,26 +13,31 @@ export default class ReleaseTracks extends React.Component{
     }
 
     render () {
-        let self = this;
-		let tracks = this.props.release.tracks.map(function(track, i) {
-			return (
-				<li key={i}>{track.title} - <a href={track.stream}>Download</a> <button onClick={self.handleClick.bind(self, i)}>Play</button></li>
-			);
-		});
-        
-		return (
-			<article className="release">
-	    		<h1>{this.props.release.title}</h1>
-	    		<h2>{this.props.release.creator}</h2>
-	    		<ol className="release-tracks">
-	    			{tracks}
-	    		</ol>
-    		</article>
-    	);
-    }
-	
-};
+        let tracks = this.props.release.tracks.map((track, i) => {
+            return (
+                <li key={i}>
+                    <button onClick={this.handleClick.bind(this, i)}>
+                        {track.title}
+                    </button>
+                    <a href={track.stream}>
+                        <SvgIcon icon="DOWNLOAD" />
+                    </a>
+                </li>
+            );
+        });
 
-ReleaseTracks.contextTypes = {
-    release: React.PropTypes.object
+        return (
+            <article className="release">
+                <h1>{this.props.release.title}</h1>
+                <h2>{this.props.release.creator}</h2>
+                <ol className="release-tracks">
+                    {tracks}
+                </ol>
+            </article>
+        );
+    }
+}
+
+ReleaseTracks.propTypes = {
+    release: React.PropTypes.object.isRequired
 };
