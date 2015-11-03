@@ -93,6 +93,12 @@
     @include hide-text;
 }
 
+%text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 %background-cover {
     background-repeat: no-repeat;
     background-position: center center;

@@ -51,12 +51,10 @@
     }
 
     .name-label {
+        @extend %text-ellipsis;
         flex-basis: 10em;
         flex-grow: 0;
-        overflow: hidden;
         font-size: 14px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
 
         .title {
             display: block;
