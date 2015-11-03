@@ -35,3 +35,15 @@ body {
     color: $textColor;
     background-color: $bodyBackground;
 }
+
+@include breakpoint(medium) {
+    body {
+        font-size: 18px;
+    }
+}
+
+@include breakpoint(large) {
+    body {
+        font-size: 20px;
+    }
+}
