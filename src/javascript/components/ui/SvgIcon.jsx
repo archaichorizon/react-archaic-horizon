@@ -125,15 +125,19 @@ class SvgIcon extends React.Component {
     }
 
     render () {
+        const style = {
+            width: `${this.state.width/16}em`,
+            height: `${this.state.height/16}em`
+        };
         return (
-            <svg version="1.1"
-                ref={this.props.icon}
-                width={this.state.width}
-                height={this.state.height}
-                className={this.state.className}
-                viewBox={`0 0 ${this.state.width} ${this.state.height}`}>
-                    <path fill={this.props.color} d={this.state.path} />
-            </svg>
+            <div className="svg-icon" style={style}>
+                <svg version="1.1"
+                    ref={this.props.icon}
+                    className={this.state.className}
+                    viewBox={`0 0 ${this.state.width} ${this.state.height}`}>
+                        <path fill={this.props.color} d={this.state.path} />
+                </svg>
+            </div>
         );
     }
 }
