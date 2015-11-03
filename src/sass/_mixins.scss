@@ -2,37 +2,6 @@
 // Mixins
 // --------------------------------------------------
 
-// https://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
-@function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
-}
-@mixin rem($property, $values...) {
-  $max: length($values);
-  $pxValues: '';
-  $remValues: '';
-
-  @for $i from 1 through $max {
-    $value: strip-unit(nth($values, $i));
-    $pxValues: #{$pxValues + $value*10}px;
-
-    @if $i < $max {
-      $pxValues: #{$pxValues + " "};
-    }
-  }
-
-  @for $i from 1 through $max {
-    $value: strip-unit(nth($values, $i));
-    $remValues: #{$remValues + $value}rem;
-
-    @if $i < $max {
-      $remValues: #{$remValues + " "};
-    }
-  }
-
-  #{$property}: $pxValues;
-  #{$property}: $remValues;
-}
-
 // Placeholder text
 @mixin placeholder($color: $placeholderText) {
     &:-moz-placeholder {
@@ -115,43 +84,23 @@
     @include hyphens;
 }
 
-// CSS3 KEYFRAME ANIMATION
-// --------------------------------------------------
-// We can remove this, and sub it out for Compass' animation technique on the next release
-
-$default-prefixes: webkit moz ms o;
-
-@mixin build-prefix-values($property, $value, $prefixes: $default-prefixes) {
-    @each $prefix in $prefixes {
-        -#{$prefix}-#{$property}: #{$value};
+@mixin breakpoint($point) {
+    @if $point == x-large {
+        @media (min-width: 1600px) { @content; }
     }
-    #{$property}: #{$value};
-}
-
-@mixin animation($name, $duration: 1s, $timingFunction: ease, $iteration: infinite) {
-    $value: $name $duration $timingFunction $iteration;
-    // use default prefixes
-    @include build-prefix-values("animation", $value);
-}
-
-@mixin keyframes($name) {
-    @-webkit-keyframes #{$name} {
-        @content;
+    @else if $point == large {
+        @media (min-width: 1200px) { @content; }
     }
-
-    @-moz-keyframes #{$name} {
-        @content;
+    @else if $point == medium {
+        @media (min-width: 1024px) { @content; }
     }
-
-    @-ms-keyframes #{$name} {
-        @content;
+    @else if $point == small {
+        @media (min-width: 768px) { @content; }
     }
-
-    @-o-keyframes #{$name} {
-        @content;
+    @else if $point == x-small {
+        @media (min-width: 650px)  { @content; }
     }
-
-    @keyframes #{$name} {
-        @content;
-    }
+    // @else if $point == landscape-16-9 {
+    //     @media screen and (min-aspect-ratio: 16/9) { @content; }
+    // }
 }
