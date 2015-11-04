@@ -1,6 +1,4 @@
-'use strict';
-
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 // Components
 import ReleaseDeck from '../releaseDeck/ReleaseDeck';
@@ -27,13 +25,16 @@ class Release extends React.Component {
     }
 
     render () {
-        return <ReleaseDeck {...this.props} />
+        return <ReleaseDeck {...this.props} />;
     }
-
-};
+}
 
 Release.contextTypes = {
     executeAction: React.PropTypes.func.isRequired
+};
+
+Release.propTypes = {
+    routeParams: PropTypes.object.isRequired
 };
 
 export default Release;
