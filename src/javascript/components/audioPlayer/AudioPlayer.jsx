@@ -60,10 +60,10 @@ class AudioPlayer extends React.Component {
         }
     }
 
-    componentWillReceiveProps (prevProps) {
-        if (prevProps.playlist !== this.props.playlist) {
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.playlist !== this.props.playlist) {
             this.setState({
-                songs: this.props.playlist,
+                songs: nextProps.playlist,
                 currentSongIndex: 0,
             });
         }
