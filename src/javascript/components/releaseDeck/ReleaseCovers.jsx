@@ -1,22 +1,24 @@
-import React from 'react';
-import SvgIcon from '../ui/SvgIcon'; 
-import Carousel from '../carousel/Carousel'; 
+import React, {PropTypes} from 'react';
+import SvgIcon from '../ui/SvgIcon';
+import Carousel from '../carousel/Carousel';
 // Action
 import setPlaylist from '../../actions/setPlaylist';
 
-class ReleaseCovers extends React.Component{
+class ReleaseCovers extends React.Component {
+
     handleClick () {
-       this.context.executeAction(setPlaylist, this.props.playlist); 
+        this.context.executeAction(setPlaylist, this.props.playlist);
     }
+
     render () {
         const style = {
             backgroundColor: this.props.bgColor,
         };
         return (
-            <div 
+            <div
                 className="release-covers"
                 style={style}>
-                <button 
+                <button
                     className="play-album-btn"
                     onClick={this.handleClick.bind(this)}>
                         <SvgIcon icon="PLAY_LARGE" />
@@ -25,13 +27,16 @@ class ReleaseCovers extends React.Component{
             </div>
         );
     }
-};
+}
 
 ReleaseCovers.contextTypes = {
-    executeAction: React.PropTypes.func.isRequired,
-    playlist: React.PropTypes.array,
-    covers: React.PropTypes.array,
-    bgColor: React.PropTypes.string,
+    executeAction: PropTypes.func.isRequired,
+};
+
+ReleaseCovers.propTypes = {
+    playlist: PropTypes.array.isRequired,
+    covers: PropTypes.array.isRequired,
+    bgColor: PropTypes.string.isRequired,
 };
 
 export default ReleaseCovers;
