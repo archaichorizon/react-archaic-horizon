@@ -1,18 +1,22 @@
-'use strict';
-
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 // Components
 import ReleaseCovers from './ReleaseCovers';
 import ReleaseDetails from './ReleaseDetails';
 import ReleaseDeckNav from './ReleaseDeckNav';
 import Loader from '../ui/Loader';
-import AudioPlayer from '../audioPlayer/AudioPlayer';
 
 // Action
-import getRelease from '../../actions/getRelease';
+import setPlaylist from '../../actions/setPlaylist';
 
-export default class ReleaseDeck extends React.Component{
+export default class ReleaseDeck extends React.Component {
+
+    componentWillReceiveProps (nextProps) {
+        // Set a playlist if nothing has been set, e.g. first load.
+        if (!nextProps.playlist && nextProps.isFetching && typeof nextProps.release !== 'undefined') {
+            this.context.executeAction(setPlaylist, nextProps.release.tracks);
+        }
+    }
 
     renderLoading () {
         return (
@@ -21,17 +25,12 @@ export default class ReleaseDeck extends React.Component{
     }
 
     renderRelease () {
-
         let moody = this.props.release.palettes.moody;
 
         let style = {
             backgroundColor: moody.primary[2],
             background: `linear-gradient(${moody.accent[0]}, ${moody.primary[0]})`,
             color: moody.secondary[0]
-        };
-
-        let coverStyle = {
-            backgroundColor: moody.primary[2],
         };
 
         return (
@@ -60,7 +59,16 @@ export default class ReleaseDeck extends React.Component{
 }
 
 ReleaseDeck.contextTypes = {
-    release: React.PropTypes.object
+    executeAction: PropTypes.func.isRequired
+};
+
+ReleaseDeck.propTypes = {
+    release: PropTypes.object,
+    nav: PropTypes.object.isRequired,
+    mood: PropTypes.object,
+    playlist: PropTypes.array,
+    covers: PropTypes.object,
+    isFetching: PropTypes.bool.isRequired,
 };
 
 // import ReleaseMood from './ReleaseMood.jsx';

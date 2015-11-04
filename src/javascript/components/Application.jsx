@@ -36,6 +36,7 @@ class Application extends React.Component {
             latest: this.props.latest,
             isFetching: this.props.isFetching,
             mood: this.props.mood,
+            playlist: this.props.playlist,
         };
         const audioPlayer = !_.isUndefined(this.props.playlist) ? <AudioPlayer playlist={this.props.playlist} mood={this.props.mood}/> : null;
         return (
