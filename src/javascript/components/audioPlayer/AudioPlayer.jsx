@@ -258,12 +258,13 @@ class AudioPlayer extends React.Component {
     }
 
     adjustVolumeTo (percent) {
+        const prevPercent = this.state.volume;
+        if (this.howler) {
+            this.howler.fade(prevPercent, percent, 100);
+        }
         this.setState({
             volume: percent
         });
-        if (this.howler) {
-            this.howler.volume(percent);
-        }
     }
 
     songCount () {
