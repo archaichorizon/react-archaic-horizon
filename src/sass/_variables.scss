@@ -28,6 +28,9 @@ $linkColorHover:            darken($linkColor, 20%) !default;
 
 $sans:                      sans-serif !default;
 $serif:                     serif !default;
+$brandonReg:				'brandon-reg', 'Helvetica Neue', Helvetica, sans-serif;
+$brandonLight:				'brandon-light', 'Helvetica Neue', Helvetica, sans-serif;
+$brandonBold:				'brandon-bold', 'Helvetica Neue', Helvetica, sans-serif;
 
 $thin:                      100 !default;
 $light:                     300 !default;
@@ -37,11 +40,11 @@ $bold:                      600 !default;
 $ultraBold:                 800 !default;
 
 $baseFontSize:              16px !default;
-$baseFontFamily:            'brandon-reg' !default;
+$baseFontFamily:            $brandonReg !default;
 $baseLineHeight:            22px !default;
 
-$headingsFontWeight:        $bold !default;
-$headingsFontFamily:        inherit !default;
+$headingsFontWeight:        normal !default;
+$headingsFontFamily:        $brandonBold !default;
 $headingsColor:             inherit !default;
 
 // Borders
