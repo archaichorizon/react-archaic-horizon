@@ -13,3 +13,25 @@
     font-weight: normal !important;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'brandon-light';
+    src: url('/fonts/brandon/brandon-light.eot'); // ie8 hack
+    src: url('/fonts/brandon/brandon-light.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/brandon/brandon-light.woff') format('woff'),
+         url('/fonts/brandon/brandon-light.ttf') format('truetype'),
+         url('/fonts/brandon/brandon-light.svg#brandon-light') format('svg');
+    font-weight: normal !important;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'brandon-bold';
+    src: url('/fonts/brandon/brandon-bld.eot'); // ie8 hack
+    src: url('/fonts/brandon/brandon-bld.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/brandon/brandon-bld.woff') format('woff'),
+         url('/fonts/brandon/brandon-bld.ttf') format('truetype'),
+         url('/fonts/brandon/brandon-bld.svg#brandon-bld') format('svg');
+    font-weight: normal !important;
+    font-style: normal;
+}
