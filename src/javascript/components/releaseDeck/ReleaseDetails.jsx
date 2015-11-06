@@ -14,6 +14,12 @@ export default class ReleaseTracks extends React.Component {
         console.warn('Add action here to play "' + track.title + '"');
     }
 
+    getYear (dateString) {
+        const date = Date.parse(dateString);
+        const year = new Date(date).getFullYear();
+        return year;
+    }
+
     render () {
         let tracks = this.props.release.tracks.map((track, i) => {
             return (
@@ -26,14 +32,14 @@ export default class ReleaseTracks extends React.Component {
         });
 
         const className = cx({
-            'release-tracks': true,
+            'tracks': true,
             'two-column': this.props.release.tracks.length > 10
         });
-
         return (
             <article className="release-details">
-                <h1>{this.props.release.title}</h1>
-                <h2>{this.props.release.creator}</h2>
+                <h1 className="title">{this.props.release.title}</h1>
+                <h2 className="creator">{this.props.release.creator}</h2>
+                <h3 className="date">{this.getYear(this.props.release.released_on)}</h3>
                 <ol className={className}>
                     {tracks}
                 </ol>
