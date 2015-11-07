@@ -3,7 +3,16 @@
 // ---------------------------
 
 .release-details {
-    .release-tracks {
+
+    .title {
+        margin: 0 0 1rem;
+        font-family: $brandonLight;
+        font-size: 4vw;
+    }
+    .creator {
+        margin: 1rem 0;
+    }
+    .tracks {
         padding: 0;
         font-size: .9em;
         &.two-column {
@@ -11,9 +20,23 @@
         }
     }
     .track {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
         position: relative;
         list-style-type: none;
         counter-increment: track-number;
+        line-height: 1.8;
+
+        border-bottom: 1px solid rgba(white, .1);
+        &:last-child {
+            border-bottom: none;
+        }
+        &:nth-of-type(1) {
+            border-bottom: 1px solid rgba(white, .1);
+        }
+        
         &:before {
             display: inline-block;
             min-width: 1em;
@@ -23,8 +46,10 @@
             content: counter(track-number)'. ';
         }
         .track-title {
-            @extend %text-ellipsis;
-            display: inline-block;
+            // @extend %text-ellipsis;
+
+            display: flex;
+            flex-basis: 100%;
             cursor: pointer;
         }
         .track-time {
