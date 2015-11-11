@@ -8,6 +8,7 @@ var expressState = require('express-state');
 var bodyParser = require('body-parser');
 var debug = require('debug')('Server');
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 var provideContext = require('fluxible-addons-react').provideContext;
 var app = require('./src/javascript/app');
 var Html = require('./src/javascript/components/Html.jsx');
@@ -73,10 +74,10 @@ server.use(function (req, res, next) {
 
                 var HtmlComponent = provideContext(Html, app.customContexts);
 
-                var markup = React.renderToString(React.createElement(
+                var markup = ReactDOMServer.renderToString(React.createElement(
                     RouterComponent, renderProps));
 
-                var html = React.renderToStaticMarkup(React.createElement(
+                var html = ReactDOMServer.renderToStaticMarkup(React.createElement(
                     HtmlComponent, {
                         context: context.getComponentContext(),
                         state: res.locals.state,
