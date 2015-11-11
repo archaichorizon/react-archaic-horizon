@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jscottsmith/react-archaic-horizon.git"
+    "url": "git://github.com/archaichorizon/react-archaic-horizon.git"
   },
   "browserify": {},
   "devDependencies": {
