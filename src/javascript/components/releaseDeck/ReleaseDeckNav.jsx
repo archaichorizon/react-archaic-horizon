@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 import SvgIcon from '../ui/SvgIcon'; 
+import Tooltip from '../ui/Tooltip';
 
 // Action
 import nextRelease from '../../actions/nextRelease';
@@ -36,8 +37,10 @@ export default class ReleaseDeckNav extends React.Component{
         if (this.props.next) {
             var next = (
                 <Link to={`/releases/${this.props.next}`} onClick={this.clickNextHandler}>
-                    <span className="hide-text">Next Releases: {this.props.next}</span>
-                    <SvgIcon icon="ARROW_LEFT_SMALL" />
+                    <Tooltip label={`Next Releases: ${this.props.next}`} alignment="LEFT">
+                        <span className="hide-text">Next Releases: {this.props.next}</span>
+                        <SvgIcon icon="ARROW_LEFT_SMALL" />
+                    </Tooltip>
                 </Link>
             );
         }
@@ -45,8 +48,10 @@ export default class ReleaseDeckNav extends React.Component{
         if (this.props.prev) {
             var prev = (
                 <Link to={`/releases/${this.props.prev}`} onClick={this.clickPrevHandler}>
-                    <span className="hide-text">Previous Releases: {this.props.prev}</span>
-                    <SvgIcon icon="ARROW_RIGHT_SMALL" />
+                    <Tooltip label={`Previous Releases: ${this.props.prev}`} alignment="RIGHT">
+                        <span className="hide-text">Previous Releases: {this.props.prev}</span>
+                        <SvgIcon icon="ARROW_RIGHT_SMALL" />
+                    </Tooltip>
                 </Link>
             );
         }
