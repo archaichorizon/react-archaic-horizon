@@ -19,7 +19,15 @@ class SvgIcon extends React.Component {
     componentWillReceiveProps (nextProps) {
         if (nextProps.icon !== this.props.icon) {
             this.setupIcon();
-            this.forceUpdate();
+        }
+    }
+
+    // Note: this seems completely unecessary but fixes
+    // an issue where the PLAY/PAUSE icons doesn't update
+    // properly.
+    componentDidUpdate (prevProps) {
+        if (prevProps.icon !== this.props.icon) {
+            this.setupIcon();
         }
     }
 
