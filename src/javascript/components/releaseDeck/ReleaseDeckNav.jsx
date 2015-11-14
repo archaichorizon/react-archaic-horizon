@@ -8,7 +8,7 @@ import Tooltip from '../ui/Tooltip';
 import nextRelease from '../../actions/nextRelease';
 import prevRelease from '../../actions/prevRelease';
 
-export default class ReleaseDeckNav extends React.Component{
+export default class ReleaseDeckNav extends React.Component {
 
     constructor () {
         super();
@@ -17,7 +17,7 @@ export default class ReleaseDeckNav extends React.Component{
     }
 
     clickPrevHandler () {
-        const payload = { 
+        const payload = {
             prev: this.props.prev,
             current: this.props.current,
         };
@@ -25,7 +25,7 @@ export default class ReleaseDeckNav extends React.Component{
     }
 
     clickNextHandler () {
-        const payload = { 
+        const payload = {
             next: this.props.next,
             current: this.props.current,
         };
@@ -33,7 +33,6 @@ export default class ReleaseDeckNav extends React.Component{
     }
 
     render () {
-
         if (this.props.next) {
             var next = (
                 <Link to={`/releases/${this.props.next}`} onClick={this.clickNextHandler}>
@@ -67,10 +66,14 @@ export default class ReleaseDeckNav extends React.Component{
             </nav>
         );
     }
-};
+}
 
 ReleaseDeckNav.contextTypes = {
-    executeAction: React.PropTypes.func.isRequired,
-    next: React.PropTypes.string,
-    prev: React.PropTypes.string
+    executeAction: PropTypes.func.isRequired,
+};
+
+ReleaseDeckNav.propTypes = {
+    next: PropTypes.string,
+    prev: PropTypes.string,
+    current: PropTypes.string
 };
