@@ -6,6 +6,7 @@ import TimeLabel from './TimeLabel.jsx';
 import NameLabel from './NameLabel.jsx';
 import Playlist from './Playlist.jsx';
 import SvgIcon from '../ui/SvgIcon.jsx';
+import Tooltip from '../ui/Tooltip';
 // import AppPlayerStore from '../../stores/AppPlayerStore';
 import {Howl} from '../../vendor/howler.core';
 
@@ -327,11 +328,14 @@ class AudioPlayer extends React.Component {
                     <VolumeBar
                         volume={this.state.volume}
                         adjustVolumeTo={this.adjustVolumeTo} />
-                    <button
-                        className="toggle-playlist"
-                        onClick={this.handleTogglePlaylist}>
-                            <SvgIcon icon="PLAYLIST" />
-                    </button>
+
+                    <Tooltip label="Playlist">
+                        <button
+                            className="toggle-playlist"
+                            onClick={this.handleTogglePlaylist}>
+                                <SvgIcon icon="PLAYLIST" />
+                        </button>
+                    </Tooltip>
                 </div>
                 <div className="playlist-container">
                     <Playlist
