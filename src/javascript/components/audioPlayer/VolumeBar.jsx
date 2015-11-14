@@ -46,7 +46,7 @@ class VolumeBar extends React.Component {
         var container = this.refs.audioVolumePercentContainer;
         var containerStartY = container.getBoundingClientRect().top;
         var percent = (e.clientY - containerStartY) / container.offsetHeight;
-        percent = 1 - percent;
+        percent = (Math.round(10 * (1 - percent)) / 10);
         // console.log(percent);
         this.props.adjustVolumeTo(percent);
     }

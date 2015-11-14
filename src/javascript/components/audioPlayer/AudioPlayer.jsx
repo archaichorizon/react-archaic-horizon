@@ -165,6 +165,7 @@ class AudioPlayer extends React.Component {
             volume: this.state.volume,
             onload: this.initSoundObjectCompleted,
             onend: this.playEnd,
+            onfaded: this.onFaded,
             html5: true,
             preload: true,
         });
@@ -265,6 +266,10 @@ class AudioPlayer extends React.Component {
         this.setState({
             volume: percent
         });
+    }
+
+    onFaded () {
+        console.log('fade end');
     }
 
     songCount () {
