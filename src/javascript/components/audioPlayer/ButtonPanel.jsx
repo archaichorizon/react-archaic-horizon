@@ -18,27 +18,12 @@ class ButtonPanel extends React.Component {
         });
         // TODO: this isn't behaving as expected. need to figure out why.
         // the svg icon doesn't seem to be updating properly
-        if (isPlaying && !isLoading) {
-            return (
-                <button
-                    className={classNames}
-                    onClick={this.props.onPauseBtnClick}>
-                        <SvgIcon icon="PAUSE" />
-                </button>
-            );
-        } else if (isLoading) {
-            return (
-                <button
-                    className={classNames}>
-                        <SvgIcon icon="PAUSE" />
-                </button>
-            );
-        }
+        // Note: fixed with `componentDidUpdate` in SvgIcon
         return (
             <button
                 className={classNames}
-                onClick={this.props.onPlayBtnClick}>
-                    <SvgIcon icon="PLAY" />
+                onClick={isPlaying && !isLoading ? this.props.onPauseBtnClick : this.props.onPlayBtnClick}>
+                    <SvgIcon icon={isPlaying && !isLoading ? 'PAUSE' : 'PLAY'} />
             </button>
         );
     }
