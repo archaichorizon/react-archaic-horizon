@@ -328,7 +328,7 @@ class AudioPlayer extends React.Component {
                     <VolumeBar
                         volume={this.state.volume}
                         adjustVolumeTo={this.adjustVolumeTo} />
-                    <Tooltip label="Playlist">
+                    <Tooltip label="Playlist" alignment="RIGHT">
                         <button
                             className="toggle-playlist"
                             onClick={this.handleTogglePlaylist}>

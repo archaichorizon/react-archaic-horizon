@@ -15,7 +15,6 @@
 	.deck-left,
 	.deck-right {
 		position: relative;
-		z-index: 1;
 	}
 	.deck-left {
 		width: 40%;
@@ -74,14 +73,11 @@
 					background: rgba(#444, .15);
 				}
 			}
-
-				.svg-icon {
+				.tooltip {
 					margin: auto;
 				}
 		}
-		.prev-release {
-		}
-		.next-release {
-		}
+		.prev-release {}
+		.next-release {}
 	}
 }

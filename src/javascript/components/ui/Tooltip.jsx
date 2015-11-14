@@ -28,9 +28,18 @@ class Tooltip extends React.Component {
         });
     }
 
+    setAlignmentClass () {
+        if (this.props.alignment === 'LEFT') {
+            return 'is-left-aligned';
+        } else if (this.props.alignment === 'RIGHT') {
+            return 'is-right-aligned';
+        } 
+        return 'is-center-aligned';
+    }
+
     render () {
         const isVisible = this.state.isVisible ? ' is-visible' : ' is-hidden';
-        const className = `tooltip ${isVisible}`;
+        const className = `tooltip ${isVisible} ${this.setAlignmentClass()}`;
 
         return (
             <div 
@@ -51,7 +60,8 @@ Tooltip.defaultProps = {
 Tooltip.propTypes = {
     children: React.PropTypes.node,
     delayTime: React.PropTypes.number,
-    label: React.PropTypes.string.isRequired
+    label: React.PropTypes.string.isRequired,
+    alignment: React.PropTypes.string
 };
 
 export default Tooltip;
