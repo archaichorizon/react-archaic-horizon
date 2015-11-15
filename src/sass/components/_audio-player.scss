@@ -24,7 +24,8 @@
     align-items: center;
 
     .button-panel {
-        flex-basis: 7.5em;
+        flex-basis: 6em;
+
         .main-btn {
             position: relative;
             padding: .5em;
@@ -43,7 +44,10 @@
 
         .player-btn {
             display: inline-block;
-            margin: 0 .5em;
+            margin: 0 .3em;
+            &:first-child {
+                margin-left: 0;
+            }
         }
         svg {
             display: block;
@@ -52,23 +56,13 @@
 
     .name-label {
         @extend %text-ellipsis;
-        flex-basis: 10em;
+        flex-basis: 14em;
         flex-grow: 0;
-        font-size: 14px;
+        font-size: 12px;
 
         .title {
-            display: block;
         }
         .artist {
-            display: none;
-        }
-        &:hover {
-            .title {
-                display: none;
-            }
-            .artist {
-                display: block;
-            }
         }
     }
 
