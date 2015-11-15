@@ -1,0 +1,46 @@
+//
+// Release Deck Nav
+// ---------------------------
+
+.release-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    overflow: hidden;
+    clear: both;
+
+    .prev-release,
+    .next-release {
+        position: relative;
+        height: 100%;
+        width: 4em;
+        cursor: pointer;
+        z-index: 1;
+
+        .hide-text {
+            position: absolute;
+        }
+
+        a {
+            display: flex;
+            align-items: stretch;
+            height: 100%;
+            width: 100%;
+            background: rgba(#444, .08);
+
+            &:hover {
+                background: rgba(#444, .15);
+            }
+        }
+            .tooltip {
+                margin: auto;
+            }
+    }
+    .prev-release {}
+    .next-release {}
+}
