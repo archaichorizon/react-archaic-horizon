@@ -299,8 +299,6 @@ class AudioPlayer extends React.Component {
             percent = this.state.seek / this.state.duration;
         }
 
-        let title = `${(this.state.currentSongIndex + 1)}. ${this.getCurrentSongTitle()}`;
-
         return (
             <div>
                 <div className="audio-player">
@@ -315,7 +313,7 @@ class AudioPlayer extends React.Component {
                         onPrevBtnClick={this.onPrevBtnClick}
                         onNextBtnClick={this.onNextBtnClick} />
                     <NameLabel
-                        title={title}
+                        title={this.getCurrentSongTitle()}
                         artist={this.state.songs[this.state.currentSongIndex].creator} />
                     <ProgressBar
                         color={this.props.mood.accent[0]}
