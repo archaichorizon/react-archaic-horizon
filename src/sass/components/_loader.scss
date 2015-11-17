@@ -19,27 +19,27 @@
 		animation-delay: 100ms;
 	}
 	.stroke-3 {
-		animation-delay: 200ms;
+		animation-delay: 250ms;
 	}
 	.stroke-4 {
-		animation-delay: 300ms;
+		animation-delay: 400ms;
 	}
 }
 
 @keyframes stroke-width {
 	0% {
-		stroke: #eee;
+		stroke-width: 0;
+        stroke: rgba(#333,0);
+	}
+	40% {
+		stroke: #333;
 		stroke-width: 2;
 	}
-	50% {
-		stroke: rgba(#333,0);
-		stroke-width: 0;
-	}
-	75% {
+	60% {
 		stroke: #333;
 		stroke-width: 2;
 	}
 	100% {
-		stroke-width: 0;
-	}
-}
+        stroke-width: 0;
+        stroke: rgba(#333,0);
+    }
